@@ -20,7 +20,12 @@ export default async function ArtistTablaturePage({ params }: Props) {
                 <h1 className="text-lg font-bold">{artist.name}のTAB譜</h1>
                 <p>曲名をクリックするとTAB譜の掲載ページに遷移します</p>
             </div>
-            <TablatureTable tablatures={tablatures} />
+            <TablatureTable
+                tablatures={tablatures.map((tablature) => ({
+                    ...tablature,
+                    title: `${tablature.title} (${tablature.instrument})`,
+                }))}
+            />
         </div>
     );
 }

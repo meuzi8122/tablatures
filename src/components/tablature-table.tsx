@@ -25,22 +25,22 @@ export default function TablatureTable({ tablatures }: Props) {
                         <th></th>
                         <th>タイトル</th>
                         <th>アーティスト</th>
-                        <th>楽器</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {tablatures.map((tsblature, index) => (
-                        <tr key={tsblature.id}>
+                    {tablatures.map((tablature, index) => (
+                        <tr key={tablature.id}>
                             <th>{index + 1}</th>
                             <td>
-                                <a href={tsblature.tablatureLink} target="_blank">
-                                    {tsblature.title}
+                                <a href={tablature.tablatureLink} target="_blank">
+                                    {tablature.title}
                                 </a>
                             </td>
                             <td>
-                                <Link href={`/tablatures/${tsblature.artist.id}`}>{tsblature.artist.name}</Link>
+                                <Link href={`/tablatures/${tablature.artist.id}`}>{tablature.artist.name}</Link>
                             </td>
-                            <td>{tsblature.instrument}</td>
+                            <td>{tablature.hasVideo && <div className="badge badge-primary">演奏動画あり</div>}</td>
                         </tr>
                     ))}
                 </tbody>

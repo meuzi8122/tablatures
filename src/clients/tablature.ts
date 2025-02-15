@@ -3,7 +3,7 @@ import type { Tablature } from "@/types/domain";
 
 export class TablatureClient {
     static endpoint = "tablatures";
-    static fields = "id,title,instrument,tablatureLink,artist.id,artist.name";
+    static fields = "id,title,instrument,tablatureLink,artist.id,artist.name,hasVideo";
 
     static async findTablaturesByTitle(keyword: string, instrument: string): Promise<Tablature[]> {
         return await client.getAllContents({

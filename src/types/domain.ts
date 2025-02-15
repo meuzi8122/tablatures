@@ -9,4 +9,5 @@ export type Tablature = {
     instrument: string;
     artist: Artist;
     tablatureLink: string;
+    hasVideo?: boolean;
 };
