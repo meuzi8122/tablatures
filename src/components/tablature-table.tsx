@@ -1,5 +1,3 @@
-"use client";
-
 import { Tablature } from "@/types/domain";
 import Link from "next/link";
 import { useState } from "react";
@@ -10,10 +8,6 @@ type Props = {
 
 export default function TablatureTable({ tablatures }: Props) {
     const [instruments, setInstruments] = useState<{ guitar: boolean; bass: boolean }>({ guitar: false, bass: false });
-
-    // const handleInstruments = (event) => {
-    //     setInstruments(event.checked);
-    // };
 
     return (
         <div className="overflow-x-auto">
