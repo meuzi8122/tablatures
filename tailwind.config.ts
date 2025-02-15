@@ -8,7 +8,7 @@ export default {
         "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     daisyui: {
-        themes: ["dark"],
+        themes: ["retro"],
     },
     theme: {
         extend: {

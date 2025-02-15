@@ -1,4 +1,5 @@
 import { SITE_TITLE } from "@/constants/site";
+import { font } from "@/fonts/google";
 import "@/styles/globals.css";
 import type { LayoutProps } from "@/types/layout";
 import type { Metadata } from "next/types";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps) {
     return (
         <html lang="ja">
-            <body>{children}</body>
+            <body className={font.className}>{children}</body>
         </html>
     );
 }
