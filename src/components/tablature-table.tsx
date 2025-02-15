@@ -11,7 +11,6 @@ export default function TablatureTable({ tablatures }: Props) {
             <table className="table">
                 <thead>
                     <tr>
-                        <th></th>
                         <th>楽曲タイトル</th>
                         <th>アーティスト</th>
                         <th>タグ</th>
@@ -20,7 +19,6 @@ export default function TablatureTable({ tablatures }: Props) {
                 <tbody>
                     {tablatures.map((tablature, index) => (
                         <tr key={tablature.id}>
-                            <th>{index + 1}</th>
                             <td>
                                 <a href={tablature.tablatureLink} target="_blank">
                                     {tablature.title}
