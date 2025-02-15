@@ -8,8 +8,6 @@ type Props = {
 export default function TablatureTable({ tablatures }: Props) {
     return (
         <div className="overflow-x-auto">
-            {/* <input type="checkbox" checked={instruments.guitar}></input>
-            <input type="checkbox" checked={instruments.bass}></input> */}
             <table className="table">
                 <thead>
                     <tr>
