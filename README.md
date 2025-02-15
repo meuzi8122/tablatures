@@ -5,7 +5,7 @@
 
 ## 実装メモ
 
-###　パスパラメータの取得方法(Next15・Dynamic Routing)
+### パスパラメータの取得方法(Next15・Dynamic Routing)
 
 - props.paramsから取得
 
@@ -32,3 +32,7 @@ export default function Page({ params }: Props) {
     const { ... } = await params;
 }
 ```
+
+## その他
+
+- git-pushでパスワード入力を求められたら、パスワードではなくアクセストークンを入力する。
