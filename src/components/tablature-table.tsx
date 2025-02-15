@@ -12,7 +12,7 @@ export default function TablatureTable({ tablatures }: Props) {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>タイトル</th>
+                        <th>楽曲タイトル</th>
                         <th>アーティスト</th>
                         <th></th>
                     </tr>
