@@ -11,11 +11,11 @@ export default async function TablaturePage({ searchParams }: Props) {
     const { keyword } = await searchParams;
 
     /* TODO: キャッシュ周り確認 */
-    const tablatures = await TablatureClient.findTablatures(keyword);
+    const tablatures = await TablatureClient.findTablaturesByTitle(keyword);
 
     return (
         <div className="container mx-auto">
-            <p>キーワード: {keyword}の検索結果</p>
+            <p>楽曲タイトルに"{keyword}"を含むTAB譜</p>
             <TablatureTable tablatures={tablatures} />
         </div>
     );

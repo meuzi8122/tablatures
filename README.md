@@ -36,3 +36,5 @@ export default function Page({ searchParams }: Props) {
 ## その他
 
 - git-pushでパスワード入力を求められたら、パスワードではなくアクセストークンを入力する。
+- MicroCMS APIで他コンテンツ参照のあるコンテンツを取得する場合、他コンテンツのIDのみ絞り込みが可能
+    - 参考: https://help.microcms.io/ja/knowledge/contents-relation-search

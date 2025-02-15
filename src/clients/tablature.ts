@@ -5,11 +5,14 @@ export class TablatureClient {
     static endpoint = "tablatures";
     static fields = "id,title,instrument,tablatureLink,artist.id,artist.name";
 
-    static async findTablatures(keyword: string): Promise<Tablature[]> {
+    static async findTablaturesByTitle(keyword: string): Promise<Tablature[]> {
         return (
             await client.getList({
                 endpoint: this.endpoint,
-                queries: { fields: this.fields, filters: `title[contains]${keyword}` },
+                queries: {
+                    fields: this.fields,
+                    filters: `title[contains]${keyword}`,
+                },
             })
         ).contents;
     }

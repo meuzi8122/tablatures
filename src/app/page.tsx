@@ -1,3 +1,4 @@
+import FormControl from "@/components/form-control";
 import { SITE_TITLE } from "@/constants/site";
 import Form from "next/form";
 
@@ -14,19 +15,7 @@ export default function IndexPage() {
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <Form action="/tablatures" className="card-body">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">楽曲タイトル</span>
-                            </label>
-                            <input
-                                name="keyword"
-                                type="text"
-                                placeholder=""
-                                className="input input-bordered"
-                                required
-                            />
-                        </div>
-                        {/* <FormControl name="keyword" label="アーティスト名・楽曲タイトル" placeholder="" /> */}
+                        <FormControl name="keyword" label="楽曲タイトル" placeholder="" />
                         <div className="form-control mt-6">
                             <button type="submit" className="btn btn-primary">
                                 <svg
