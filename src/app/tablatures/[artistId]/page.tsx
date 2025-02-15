@@ -15,8 +15,8 @@ export default async function ArtistTablaturePage({ params }: Props) {
     const tablatures = await TablatureClient.findTablaturesByArtist(artistId);
 
     return (
-        <div className="container mx-auto">
-            <p>{artist.name}</p>
+        <div className="container mx-auto mt-4">
+            <h1 className="font-bold mb-4">{artist.name}のTAB譜</h1>
             <TablatureTable tablatures={tablatures} />
         </div>
     );

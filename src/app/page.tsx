@@ -1,4 +1,5 @@
-import FormControl from "@/components/form-control";
+import RadioFormControl from "@/components/radio-form-control";
+import TextFormControl from "@/components/text-form-control";
 import { SITE_TITLE } from "@/constants/site";
 import Form from "next/form";
 
@@ -15,7 +16,23 @@ export default function IndexPage() {
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <Form action="/tablatures" className="card-body">
-                        <FormControl name="keyword" label="楽曲タイトル" placeholder="" />
+                        <TextFormControl name="keyword" label="楽曲タイトル" placeholder="" />
+                        <label className="label">
+                            <span className="label-text">楽器で絞り込む</span>
+                        </label>
+                        <RadioFormControl
+                            name="instrument"
+                            label="エレキギター"
+                            value="エレキギター"
+                            defaultChecked={true}
+                        />
+                        <RadioFormControl
+                            name="instrument"
+                            label="アコースティックギター"
+                            value="アコースティックギター"
+                            defaultChecked={true}
+                        />
+                        <RadioFormControl name="instrument" label="エレキベース" value="エレキベース" />
                         <div className="form-control mt-6">
                             <button type="submit" className="btn btn-primary">
                                 <svg

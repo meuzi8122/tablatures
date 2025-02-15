@@ -4,7 +4,7 @@ type Props = {
     placeholder: string;
 };
 
-export default function FormControl({ name, label, placeholder }: Props) {
+export default function TextFormControl({ name, label, placeholder }: Props) {
     return (
         <div className="form-control">
             <label className="label">

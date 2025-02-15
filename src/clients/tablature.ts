@@ -5,24 +5,21 @@ export class TablatureClient {
     static endpoint = "tablatures";
     static fields = "id,title,instrument,tablatureLink,artist.id,artist.name";
 
-    static async findTablaturesByTitle(keyword: string): Promise<Tablature[]> {
-        return (
-            await client.getList({
-                endpoint: this.endpoint,
-                queries: {
-                    fields: this.fields,
-                    filters: `title[contains]${keyword}`,
-                },
-            })
-        ).contents;
+    static async findTablaturesByTitle(keyword: string, instrument: string): Promise<Tablature[]> {
+        return await client.getAllContents({
+            endpoint: this.endpoint,
+            queries: {
+                fields: this.fields,
+                /* instrumentカラムはセレクトフィールドなので、equalsではなくcontainsを指定する。 */
+                filters: `title[contains]${keyword}[and]instrument[contains]${instrument}`,
+            },
+        });
     }
 
     static async findTablaturesByArtist(artistId: string): Promise<Tablature[]> {
-        return (
-            await client.getList({
-                endpoint: this.endpoint,
-                queries: { fields: this.fields, filters: `artist[equals]${artistId}` },
-            })
-        ).contents;
+        return await client.getAllContents({
+            endpoint: this.endpoint,
+            queries: { fields: this.fields, filters: `artist[equals]${artistId}` },
+        });
     }
 }
