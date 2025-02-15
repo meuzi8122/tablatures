@@ -1,5 +1,6 @@
 import { TablatureClient } from "@/clients/tablature";
 import TablatureTable from "@/components/tablature-table";
+import { redirect } from "next/navigation";
 
 type Props = {
     searchParams: Promise<{
@@ -10,6 +11,10 @@ type Props = {
 
 export default async function TablaturePage({ searchParams }: Props) {
     const { keyword, instrument } = await searchParams;
+
+    if (!(keyword && instrument)) {
+        redirect("/");
+    }
 
     /* TODO: キャッシュ周り確認 */
     const tablatures = await TablatureClient.findTablaturesByTitle(keyword, instrument);
