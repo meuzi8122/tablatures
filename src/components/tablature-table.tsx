@@ -1,14 +1,11 @@
 import { Tablature } from "@/types/domain";
 import Link from "next/link";
-import { useState } from "react";
 
 type Props = {
     tablatures: Tablature[];
 };
 
 export default function TablatureTable({ tablatures }: Props) {
-    const [instruments, setInstruments] = useState<{ guitar: boolean; bass: boolean }>({ guitar: false, bass: false });
-
     return (
         <div className="overflow-x-auto">
             {/* <input type="checkbox" checked={instruments.guitar}></input>
