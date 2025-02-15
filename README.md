@@ -14,8 +14,8 @@ type Props = {
     params: Promise<{...}>;
 };
 
-export default function Page({ searchParams }: Props) {
-    const { ... } = await searchParams;
+export default function Page({ params }: Props) {
+    const { ... } = await params;
 }
 ```
 
@@ -25,11 +25,11 @@ export default function Page({ searchParams }: Props) {
 
 ```
 type Props = {
-    params: Promise<{...}>;
+    searchParams: Promise<{...}>;
 };
 
-export default function Page({ params }: Props) {
-    const { ... } = await params;
+export default function Page({ searchParams }: Props) {
+    const { ... } = await searchParams;
 }
 ```
 
