@@ -11,7 +11,9 @@ export default async function ArtistPage() {
             <div className="flex flex-col">
                 {artists.map((artist) => (
                     <Fragment key={artist.id}>
-                        <Link href={`/tablatures/${artist.id}`}>{artist.name}</Link>
+                        <Link className="link link-primary" href={`/tablatures/${artist.id}`}>
+                            {artist.name}
+                        </Link>
                         <div className="divider"></div>
                     </Fragment>
                 ))}
