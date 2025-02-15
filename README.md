@@ -19,7 +19,7 @@ export default function Page({ params }: Props) {
 }
 ```
 
-## クエリパラメータの取得方法(Next15)
+### クエリパラメータの取得方法(Next15)
 
 - props.searchParamsから取得
 
