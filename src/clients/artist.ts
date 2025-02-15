@@ -14,4 +14,11 @@ export class ArtistClient {
             },
         });
     }
+
+    static async findArtists(): Promise<Artist[]> {
+        return await client.getAllContents({
+            endpoint: this.endpoint,
+            queries: { fields: this.fields },
+        });
+    }
 }

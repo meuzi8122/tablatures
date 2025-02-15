@@ -21,11 +21,11 @@ export default async function TablaturePage({ searchParams }: Props) {
 
     return (
         <div className="container mx-auto mt-6">
-            <div className="flex flex-col items-center mb-7 space-y-3">
+            <div className="flex flex-col items-center mb-8 space-y-3">
                 <h1 className="text-lg font-bold">
                     楽曲タイトルに"{keyword}"を含む / {instrument}のTAB譜
                 </h1>
-                <p>曲名をクリックするとTAB譜の掲載ページに遷移します</p>
+                <p>曲名をクリックするとTAB譜の掲載サイトを表示します</p>
             </div>
             <TablatureTable tablatures={tablatures} />
         </div>

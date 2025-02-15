@@ -16,9 +16,9 @@ export default async function ArtistTablaturePage({ params }: Props) {
 
     return (
         <div className="container mx-auto mt-6">
-            <div className="flex flex-col items-center mb-7 space-y-3">
+            <div className="flex flex-col items-center mb-8 space-y-3">
                 <h1 className="text-lg font-bold">{artist.name}のTAB譜</h1>
-                <p>曲名をクリックするとTAB譜の掲載ページに遷移します</p>
+                <p>曲名をクリックするとTAB譜の掲載ページを表示します</p>
             </div>
             <TablatureTable
                 tablatures={tablatures.map((tablature) => ({

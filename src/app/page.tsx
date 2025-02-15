@@ -2,6 +2,7 @@ import RadioFormControl from "@/components/radio-form-control";
 import TextFormControl from "@/components/text-form-control";
 import { SITE_TITLE } from "@/constants/site";
 import Form from "next/form";
+import Link from "next/link";
 
 export default function IndexPage() {
     return (
@@ -9,10 +10,10 @@ export default function IndexPage() {
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">{SITE_TITLE}</h1>
-                    <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
-                    </p>
+                    <p className="pt-6 pb-8">ギター・ベース用TAB譜を掲載しているサイトのまとめ</p>
+                    <Link href="/artists" className="link link-primary">
+                        アーティスト一覧
+                    </Link>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <Form action="/tablatures" className="card-body">
@@ -30,7 +31,6 @@ export default function IndexPage() {
                             name="instrument"
                             label="アコースティックギター"
                             value="アコースティックギター"
-                            defaultChecked={true}
                         />
                         <RadioFormControl name="instrument" label="エレキベース" value="エレキベース" />
                         <div className="form-control mt-6">
