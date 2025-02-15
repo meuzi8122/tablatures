@@ -20,11 +20,13 @@ export default async function TablaturePage({ searchParams }: Props) {
     const tablatures = await TablatureClient.findTablaturesByTitle(keyword, instrument);
 
     return (
-        <div className="container mx-auto mt-4">
-            <h1 className="font-bold mb-4">
-                楽曲タイトルに"{keyword}"を含む / {instrument}のTAB譜
-            </h1>
-            <p>曲名をクリックするとTAB譜の掲載ページに遷移します</p>
+        <div className="container mx-auto mt-6">
+            <div className="flex flex-col items-center mb-7 space-y-3">
+                <h1 className="text-lg font-bold">
+                    楽曲タイトルに"{keyword}"を含む / {instrument}のTAB譜
+                </h1>
+                <p>曲名をクリックするとTAB譜の掲載ページに遷移します</p>
+            </div>
             <TablatureTable tablatures={tablatures} />
         </div>
     );
