@@ -17,6 +17,7 @@ export default async function ArtistTablaturePage({ params }: Props) {
     return (
         <div className="container mx-auto mt-4">
             <h1 className="font-bold mb-4">{artist.name}のTAB譜</h1>
+            <p>曲名をクリックするとTAB譜の掲載ページに遷移します</p>
             <TablatureTable tablatures={tablatures} />
         </div>
     );
