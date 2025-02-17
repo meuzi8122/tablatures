@@ -1,8 +1,9 @@
 import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import TablatureTable from "../../src/components/tablature-table";
 
 describe("TAB譜一覧テーブルのテスト", () => {
-    test("TAB譜一覧が表示されること", () => {
+    test("TAB譜一覧が表示されること", async () => {
         const { getByRole, getAllByRole } = render(
             <TablatureTable
                 tablatures={[
@@ -12,7 +13,7 @@ describe("TAB譜一覧テーブルのテスト", () => {
                         artist: { id: "test-artist-1", name: "TEST_ARTIST_1" },
                         instrument: "エレキギター",
                         tablatureLink: "https://example.com/xxxx",
-                        hasVideo: true,
+                        hasVideo: false,
                     },
                     {
                         id: "test-tablature-2",
@@ -20,14 +21,27 @@ describe("TAB譜一覧テーブルのテスト", () => {
                         artist: { id: "test-artist-2", name: "TEST_ARTIST_2" },
                         instrument: "エレキギター",
                         tablatureLink: "https://example.com/zzzz",
-                        hasVideo: false,
+                        hasVideo: true,
                     },
                 ]}
             />,
         );
 
+        const hasVideoCheckeBox = getByRole("checkbox");
+        expect(hasVideoCheckeBox).not.toBeChecked();
+
         const rows = getAllByRole("row");
+        expect(rows.length).toBe(3);
+        expect(rows[0].querySelector("th")).toHaveTextContent("楽曲タイトル");
         expect(rows[1].querySelector("td")).toHaveTextContent("TEST_SONG_1");
         expect(rows[2].querySelector("td")).toHaveTextContent("TEST_SONG_2");
+
+        await userEvent.click(hasVideoCheckeBox);
+        expect(hasVideoCheckeBox).toBeChecked();
+
+        const rows_2 = getAllByRole("row");
+        expect(rows_2.length).toBe(2);
+        expect(rows_2[0].querySelector("th")).toHaveTextContent("楽曲タイトル");
+        expect(rows_2[1].querySelector("td")).toHaveTextContent("TEST_SONG_2");
     });
 });
