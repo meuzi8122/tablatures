@@ -33,6 +33,14 @@ export default function Page({ searchParams }: Props) {
 }
 ```
 
+## Jest
+
+- 設定ファイルでルートディレクトリを記載する場合は`<rootDir>`を記載する。
+
+```
+setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"]
+```
+
 ## その他
 
 - git-pushでパスワード入力を求められたら、パスワードではなくアクセストークンを入力する。
