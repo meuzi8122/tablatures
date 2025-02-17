@@ -8,7 +8,7 @@ jobs:
         steps:
             - name: CheckOut
               uses: actions/checkout@v4
-            - id: Check CPU Cores
+            - name: Check CPU Cores
               uses: SimenB/github-actions-cpu-cores@v2
             - name: Install Packages
               run: npm ci
