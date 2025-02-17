@@ -1,0 +1,17 @@
+name: UnitTest
+
+on: push
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+    steps:
+        - name: CheckOut
+          uses: actions/checkout@v4
+        - id: Check CPU Cores
+          uses: SimenB/github-actions-cpu-cores@v2
+        - name: Install Packages
+          run: npm ci
+        - name: Run Test
+          # UTを並列実行
+          run: npm test -max-workers ${{ steps.cpu-cores.outputs.count }}
