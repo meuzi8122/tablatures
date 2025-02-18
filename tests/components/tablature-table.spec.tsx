@@ -1,6 +1,6 @@
+import TablatureTable from "@/components/tablature-table";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import TablatureTable from "../../src/components/tablature-table";
 
 describe("TAB譜一覧テーブルのテスト", () => {
     test("TAB譜一覧が表示されること", async () => {
