@@ -1,5 +1,5 @@
 import Navbar from "@/components/navbar";
-import { SITE_TITLE } from "@/constants/site";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/constants/site";
 import { font } from "@/fonts/google";
 import "@/styles/globals.css";
 import type { LayoutProps } from "@/types/layout";
@@ -7,7 +7,7 @@ import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {
     title: `タブ譜一覧 | ${SITE_TITLE}`,
-    description: "",
+    description: SITE_DESCRIPTION,
 };
 
 export default function TablaturePageLayout({ children }: LayoutProps) {

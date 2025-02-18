@@ -1,6 +1,6 @@
 import RadioFormControl from "@/components/radio-form-control";
 import TextFormControl from "@/components/text-form-control";
-import { SITE_TITLE } from "@/constants/site";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/constants/site";
 import Form from "next/form";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ export default function IndexPage() {
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">{SITE_TITLE}</h1>
-                    <p className="pt-6 pb-8">ギター・ベース用TAB譜を掲載しているサイトのまとめ</p>
+                    <p className="pt-6 pb-8">{SITE_DESCRIPTION}</p>
                     <Link href="/artists" className="link link-primary">
                         アーティスト一覧
                     </Link>
