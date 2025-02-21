@@ -6,7 +6,7 @@ import type { LayoutProps } from "@/types/layout";
 import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {
-    title: `アーティスト一覧 | ${SITE_TITLE}`,
+    title: `掲載アーティスト一覧 | ${SITE_TITLE}`,
     description: SITE_DESCRIPTION,
 };
 

@@ -7,7 +7,7 @@ export default async function ArtistPage() {
 
     return (
         <div className="container mx-auto">
-            <h1 className="text-lg font-bold text-center mt-6 mb-8">アーティスト一覧</h1>
+            <h1 className="text-lg font-bold text-center mt-6 mb-8">掲載アーティスト一覧</h1>
             <div className="flex flex-col">
                 {artists.map((artist) => (
                     <Fragment key={artist.id}>

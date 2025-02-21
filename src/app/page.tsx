@@ -12,7 +12,7 @@ export default function IndexPage() {
                     <h1 className="text-5xl font-bold">{SITE_TITLE}</h1>
                     <p className="pt-6 pb-8">{SITE_DESCRIPTION}</p>
                     <Link href="/artists" className="link link-primary">
-                        アーティスト一覧
+                        掲載アーティスト一覧
                     </Link>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
