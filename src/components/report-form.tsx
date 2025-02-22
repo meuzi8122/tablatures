@@ -1,25 +1,43 @@
 "use client";
 
 import { reportAction } from "@/app/actions/report";
-import { useActionState } from "react";
+import { useRouter } from "next/navigation";
+import { useActionState, useEffect } from "react";
 
 type Props = {
     id: string;
 };
 
 export default function ReportForm({ id }: Props) {
-    const [_, action, isPending] = useActionState(reportAction, null);
+    const router = useRouter();
+
+    const [message, action, isPending] = useActionState(reportAction, null);
+
+    useEffect(() => {
+        if (message) {
+            alert(message);
+            router.back();
+        }
+    }, [message]);
 
     return (
         <form action={action} className="flex flex-col space-y-3">
-            {["TAB譜のリンクが切れている", "TAB譜の情報がリンク先の内容と一致しない"].map((content) => (
-                <div className="form-control">
-                    <label className="label cursor-pointer">
-                        <span className="label-text">{content}</span>
-                        <input type="radio" name="content" className="radio checked:bg-red-500" value={content} />
-                    </label>
-                </div>
-            ))}
+            {["リンクが切れている", "TAB譜の内容がリンク先の内容と一致しない", "リンク先の内容が古い"].map(
+                (content, index) => (
+                    <div className="form-control" key={`content-${index}`}>
+                        <label className="label cursor-pointer">
+                            <span className="label-text">{content}</span>
+                            <input
+                                type="radio"
+                                name="content"
+                                className="radio checked:bg-red-500"
+                                value={content}
+                                defaultChecked={index == 0}
+                            />
+                        </label>
+                    </div>
+                ),
+            )}
             <input name="id" type="hidden" value={id} />
             <div className="flex">
                 <button className="btn btn-primary" type="submit">
