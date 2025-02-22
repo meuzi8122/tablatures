@@ -3,11 +3,15 @@ export type Artist = {
     name: string;
 };
 
-export type Tablature = {
+export type Song = {
     id: string;
     title: string;
-    instrument: string;
     artist: Artist;
-    tablatureLink: string;
+};
+
+export type Tablature = {
+    id: string;
+    instrument: string;
+    link: string;
     hasVideo?: boolean;
 };

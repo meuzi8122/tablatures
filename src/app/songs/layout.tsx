@@ -6,7 +6,7 @@ import type { LayoutProps } from "@/types/layout";
 import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {
-    title: `タブ譜一覧 | ${SITE_TITLE}`,
+    title: `楽曲一覧 | ${SITE_TITLE}`,
     description: SITE_DESCRIPTION,
 };
 
