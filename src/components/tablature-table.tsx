@@ -25,6 +25,7 @@ export default function TablatureTable({ tablatures }: Props) {
             <table className="table">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>TAB譜リンク</th>
                         <th>楽器</th>
                         <th>タグ</th>
@@ -32,17 +33,20 @@ export default function TablatureTable({ tablatures }: Props) {
                 </thead>
                 <tbody>
                     {/* TODO: flatMapを使うべき？ */}
-                    {(hasVideo ? tablatures.filter((tablature) => tablature.hasVideo) : tablatures).map((tablature) => (
-                        <tr key={tablature.id}>
-                            <td>
-                                <a href={tablature.link} target="_blank">
-                                    リンク
-                                </a>
-                            </td>
-                            <td>{tablature.instrument}</td>
-                            <td>{tablature.hasVideo && <div className="badge badge-primary">演奏動画あり</div>}</td>
-                        </tr>
-                    ))}
+                    {(hasVideo ? tablatures.filter((tablature) => tablature.hasVideo) : tablatures).map(
+                        (tablature, index) => (
+                            <tr key={tablature.id}>
+                                <th>{index + 1}</th>
+                                <td>
+                                    <a href={tablature.link} target="_blank">
+                                        リンク
+                                    </a>
+                                </td>
+                                <td>{tablature.instrument}</td>
+                                <td>{tablature.hasVideo && <div className="badge badge-primary">演奏動画あり</div>}</td>
+                            </tr>
+                        ),
+                    )}
                 </tbody>
             </table>
         </div>
