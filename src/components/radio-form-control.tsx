@@ -13,7 +13,7 @@ export default function RadioFormControl({ name, label, value, defaultChecked = 
                 <input
                     type="radio"
                     name={name}
-                    className="radio checked:bg-blue-500"
+                    className="radio checked:bg-red-500"
                     value={value}
                     defaultChecked={defaultChecked}
                 />
