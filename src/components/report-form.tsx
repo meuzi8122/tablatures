@@ -1,14 +1,15 @@
 "use client";
 
 import { reportAction } from "@/app/actions/report";
+import type { Tablature } from "@/types/domain";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 
 type Props = {
-    id: string;
+    tablature: Tablature;
 };
 
-export default function ReportForm({ id }: Props) {
+export default function ReportForm({ tablature }: Props) {
     const router = useRouter();
 
     const [message, action, isPending] = useActionState(reportAction, null);
@@ -22,6 +23,39 @@ export default function ReportForm({ id }: Props) {
 
     return (
         <form action={action} className="flex flex-col space-y-3">
+            <label className="form-control w-full">
+                <div className="label">
+                    <span className="label-text">タブ譜ID</span>
+                </div>
+                <input type="text" name="id" value={tablature.id} className="input input-bordered" readOnly />
+            </label>
+            <label className="form-control">
+                <div className="label">
+                    <span className="label-text">楽曲タイトル</span>
+                </div>
+                <input
+                    type="text"
+                    name="title"
+                    value={tablature.song?.title}
+                    className="input input-bordered"
+                    readOnly
+                />
+            </label>
+            <label className="form-control w-full">
+                <div className="label">
+                    <span className="label-text">アーティスト</span>
+                </div>
+                <input
+                    type="text"
+                    name="artist"
+                    value={tablature.song?.artist?.name}
+                    className="input input-bordered"
+                    readOnly
+                />
+            </label>
+            <div className="label">
+                <span className="label-text text-lg">報告内容</span>
+            </div>
             {["リンクが切れている", "TAB譜の内容がリンク先の内容と一致しない", "リンク先の内容が古い"].map(
                 (content, index) => (
                     <div className="form-control" key={`content-${index}`}>
@@ -38,9 +72,8 @@ export default function ReportForm({ id }: Props) {
                     </div>
                 ),
             )}
-            <input name="id" type="hidden" value={id} />
             <div className="flex">
-                <button className="btn btn-primary" type="submit">
+                <button className="btn btn-primary mt-3" type="submit">
                     {isPending && <span className="loading loading-spinner"></span>}
                     {!isPending && (
                         <svg
@@ -58,7 +91,7 @@ export default function ReportForm({ id }: Props) {
                             />
                         </svg>
                     )}
-                    送信
+                    報告を送信
                 </button>
             </div>
         </form>

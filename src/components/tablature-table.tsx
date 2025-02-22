@@ -47,7 +47,7 @@ export default function TablatureTable({ tablatures }: Props) {
                                 <td>{tablature.instrument}</td>
                                 <td>{tablature.hasVideo && <div className="badge badge-primary">演奏動画あり</div>}</td>
                                 <td>
-                                    <Link href={`/report/${tablature.id}}`}>TAB譜を報告</Link>
+                                    <Link href={`/report/${tablature.id}`}>TAB譜を報告</Link>
                                 </td>
                             </tr>
                         ),

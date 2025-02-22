@@ -11,4 +11,15 @@ export class TablatureClient {
             queries: { fields: this.fields, filters: `song[equals]${songId}` },
         });
     }
+
+    static async getTablature(id: string): Promise<Tablature> {
+        return await client.get({
+            endpoint: this.endpoint,
+            contentId: id,
+            queries: {
+                fields: `${this.fields},song.id,song.title,song.artist.id,song.artist.name`,
+                depth: 2,
+            },
+        });
+    }
 }

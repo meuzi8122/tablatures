@@ -14,4 +14,5 @@ export type Tablature = {
     instrument: string;
     link: string;
     hasVideo?: boolean;
+    song?: Song;
 };
