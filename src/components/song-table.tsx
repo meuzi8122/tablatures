@@ -13,7 +13,7 @@ export default function SongTable({ songs }: Props) {
                     <tr>
                         <th>楽曲タイトル</th>
                         <th>アーティスト</th>
-                        <th>TAB譜</th>
+                        <th>TAB譜一覧</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,10 +21,14 @@ export default function SongTable({ songs }: Props) {
                         <tr key={song.id}>
                             <td>{song.title}</td>
                             <td>
-                                <Link href={`/songs/${song.artist.id}`}>{song.artist.name}</Link>
+                                <Link className="link link-primary" href={`/songs/${song.artist.id}`}>
+                                    {song.artist.name}
+                                </Link>
                             </td>
                             <td>
-                                <Link href={`/tablatures/${song.id}`}>TAB譜一覧</Link>
+                                <Link className="link link-secondary" href={`/tablatures/${song.id}`}>
+                                    TAB譜一覧
+                                </Link>
                             </td>
                         </tr>
                     ))}
