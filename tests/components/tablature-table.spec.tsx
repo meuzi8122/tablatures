@@ -30,7 +30,9 @@ describe("TAB譜一覧テーブルのテスト", () => {
         expect(rows.length).toBe(3);
         expect(rows[0].querySelector("th")).toHaveTextContent("TAB譜リンク");
         expect(rows[1].querySelector("td")).toHaveTextContent("リンク");
+        expect(rows[1].querySelector("a")).toHaveAttribute("href", "https://example.com/xxxx");
         expect(rows[2].querySelector("td")).toHaveTextContent("リンク");
+        expect(rows[2].querySelector("a")).toHaveAttribute("href", "https://example.com/zzzz");
 
         await userEvent.click(hasVideoCheckeBox);
         expect(hasVideoCheckeBox).toBeChecked();
@@ -39,5 +41,6 @@ describe("TAB譜一覧テーブルのテスト", () => {
         expect(rows_2.length).toBe(2);
         expect(rows_2[0].querySelector("th")).toHaveTextContent("TAB譜リンク");
         expect(rows_2[1].querySelector("td")).toHaveTextContent("リンク");
+        expect(rows_2[1].querySelector("a")).toHaveAttribute("href", "https://example.com/zzzz");
     });
 });
