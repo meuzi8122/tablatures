@@ -30,7 +30,7 @@ export default function TablatureTable({ tablatures }: Props) {
                         <th>TAB譜リンク</th>
                         <th>楽器</th>
                         <th>タグ</th>
-                        <th></th>
+                        <th>TAB譜を報告</th>
                     </tr>
                 </thead>
                 <tbody>
