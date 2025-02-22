@@ -20,7 +20,9 @@ export default function SongTable({ songs }: Props) {
                     {songs.map((song) => (
                         <tr key={song.id}>
                             <td>{song.title}</td>
-                            <td>{song.artist.name}</td>
+                            <td>
+                                <Link href={`/songs/${song.artist.id}`}>{song.artist.name}</Link>
+                            </td>
                             <td>
                                 <Link href={`/tablatures/${song.id}`}>TAB譜一覧</Link>
                             </td>
