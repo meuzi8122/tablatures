@@ -1,5 +1,5 @@
 import { TablatureClient } from "@/clients/tablature";
-import TablatureTable from "@/components/tablature-table";
+import TablatureList from "@/components/tablature-list";
 import { redirect } from "next/navigation";
 
 type Props = {
@@ -19,15 +19,5 @@ export default async function TablaturePage({ searchParams }: Props) {
     /* TODO: キャッシュ周り確認 */
     const tablatures = await TablatureClient.findTablaturesByTitle(keyword, instrument);
 
-    return (
-        <div className="container mx-auto mt-6">
-            <div className="flex flex-col items-center mb-8 space-y-3">
-                <h1 className="text-lg font-bold">
-                    楽曲タイトルに"{keyword}"を含む / {instrument}のTAB譜
-                </h1>
-                <p>曲名をクリックするとTAB譜の掲載サイトを表示します</p>
-            </div>
-            <TablatureTable tablatures={tablatures} />
-        </div>
-    );
+    return <TablatureList filter={`タイトルに"${keyword}"を含む / ${instrument}`} tablatures={tablatures} />;
 }

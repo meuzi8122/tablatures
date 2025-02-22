@@ -1,6 +1,6 @@
 import { ArtistClient } from "@/clients/artist";
 import { TablatureClient } from "@/clients/tablature";
-import TablatureTable from "@/components/tablature-table";
+import TablatureList from "@/components/tablature-list";
 
 type Props = {
     params: Promise<{
@@ -15,17 +15,12 @@ export default async function ArtistTablaturePage({ params }: Props) {
     const tablatures = await TablatureClient.findTablaturesByArtist(artistId);
 
     return (
-        <div className="container mx-auto mt-6">
-            <div className="flex flex-col items-center mb-8 space-y-3">
-                <h1 className="text-lg font-bold">{artist.name}のTAB譜</h1>
-                <p>曲名をクリックするとTAB譜の掲載ページを表示します</p>
-            </div>
-            <TablatureTable
-                tablatures={tablatures.map((tablature) => ({
-                    ...tablature,
-                    title: `${tablature.title} (${tablature.instrument})`,
-                }))}
-            />
-        </div>
+        <TablatureList
+            filter={artist.name}
+            tablatures={tablatures.map((tablature) => ({
+                ...tablature,
+                title: `${tablature.title} (${tablature.instrument})`,
+            }))}
+        />
     );
 }
