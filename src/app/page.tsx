@@ -9,7 +9,7 @@ export default function IndexPage() {
                 <div className="max-w-md">
                     <h1 className="text-5xl font-bold">{SITE_TITLE}</h1>
                     <p className="py-6">
-                        Youtube等で公開されているギター・ベース向けのTAB譜を収集しまとめています。当サイトに掲載される全てのコンテンツの著作権は、各権利所有者に帰属します。
+                        Youtube等で公開されているギター・ベース向けのTAB譜をまとめています。当サイトに掲載される全てのコンテンツの著作権は、各権利所有者に帰属します。
                     </p>
                     <Form action="/songs">
                         <label className="input input-bordered flex items-center gap-2 mb-5">
