@@ -6,11 +6,11 @@ import type { LayoutProps } from "@/types/layout";
 import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {
-    title: `楽曲一覧 | ${SITE_TITLE}`,
+    title: `タブ譜を報告 | ${SITE_TITLE}`,
     description: SITE_DESCRIPTION,
 };
 
-export default function SongPageLayout({ children }: LayoutProps) {
+export default function ReportPageLayout({ children }: LayoutProps) {
     return (
         <html lang="ja">
             <body className={font.className}>

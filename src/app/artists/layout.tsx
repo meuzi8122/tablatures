@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
 };
 
-export default function TablaturePageLayout({ children }: LayoutProps) {
+export default function ArtistPageLayout({ children }: LayoutProps) {
     return (
         <html lang="ja">
             <body className={font.className}>

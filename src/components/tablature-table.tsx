@@ -1,6 +1,7 @@
 "use client";
 
 import type { Tablature } from "@/types/domain";
+import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 
 type Props = {
@@ -29,6 +30,7 @@ export default function TablatureTable({ tablatures }: Props) {
                         <th>TAB譜リンク</th>
                         <th>楽器</th>
                         <th>タグ</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +46,9 @@ export default function TablatureTable({ tablatures }: Props) {
                                 </td>
                                 <td>{tablature.instrument}</td>
                                 <td>{tablature.hasVideo && <div className="badge badge-primary">演奏動画あり</div>}</td>
+                                <td>
+                                    <Link href={`/report/${tablature.id}}`}>TAB譜を報告</Link>
+                                </td>
                             </tr>
                         ),
                     )}
