@@ -11,3 +11,8 @@ export type Tablature = {
     tablatureLink: string;
     hasVideo?: boolean;
 };
+
+export type Contact = {
+    category: string;
+    content: string;
+};

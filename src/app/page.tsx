@@ -11,9 +11,14 @@ export default function IndexPage() {
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">{SITE_TITLE}</h1>
                     <p className="pt-6 pb-8">{SITE_DESCRIPTION}</p>
-                    <Link href="/artists" className="link link-primary">
-                        掲載アーティスト一覧
-                    </Link>
+                    <div className="flex lg:flex-col lg:space-y-3">
+                        <Link href="/artists" className="link link-primary">
+                            掲載アーティスト一覧
+                        </Link>
+                        <Link href="/contact" className="link link-primary">
+                            お問い合わせ
+                        </Link>
+                    </div>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <Form action="/tablatures" className="card-body">
