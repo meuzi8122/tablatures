@@ -2,6 +2,13 @@
 
 - npm ci
 - npm run dev
+- http://xxx.xxx.x.xxx:3000を確認
+
+## prismaスキーマ更新
+
+- npx prisma format
+- npx prisma generate
+- npx prisma db push
 
 ## 実装メモ
 
