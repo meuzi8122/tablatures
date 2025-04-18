@@ -14,8 +14,8 @@ type Props = {
 };
 
 const INSTRUMENTS: Option[] = [
-    { label: "エレキギター", value: "エレキギター" },
-    { label: "エレキベース", value: "エレキベース" },
+    { key: "instrument-1", label: "エレキギター", value: "エレキギター" },
+    { key: "instrument-2", label: "エレキベース", value: "エレキベース" },
 ];
 
 export default function TablatureForm({ tablature }: Props) {

@@ -1,4 +1,5 @@
 export type Option = {
+    key: string;
     label: string;
     value: string;
 };
@@ -16,7 +17,9 @@ export default function Select({ name, options, defaultValue }: Props) {
                 選択してください
             </option>
             {options.map((option) => (
-                <option value={option.value}>{option.label}</option>
+                <option key={option.key} value={option.value}>
+                    {option.label}
+                </option>
             ))}
         </select>
     );
