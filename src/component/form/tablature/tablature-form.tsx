@@ -1,6 +1,7 @@
 "use client";
 
-import { tablatureAction } from "@/app/actions/tablature";
+import { tablatureAction } from "@/action/tablature";
+import Select, { Option } from "@/component/form/select";
 import TextInput from "@/component/form/text-input";
 import TrashIcon from "@/component/icon/trash-icon";
 import UpdateIcon from "@/component/icon/update-icon";
@@ -11,6 +12,11 @@ import { useActionState, useEffect } from "react";
 type Props = {
     tablature: Tablature;
 };
+
+const INSTRUMENTS: Option[] = [
+    { label: "エレキギター", value: "エレキギター" },
+    { label: "エレキベース", value: "エレキベース" },
+];
 
 export default function TablatureForm({ tablature }: Props) {
     const router = useRouter();
@@ -30,6 +36,8 @@ export default function TablatureForm({ tablature }: Props) {
                 <TextInput name="title" label="曲名" defaultValue={tablature.title} />
                 <TextInput name="artist" label="アーティスト名" defaultValue={tablature.artist} />
                 <TextInput name="link" label="TAB譜リンク" defaultValue={tablature.link} />
+                <Select name="instrument" options={INSTRUMENTS} defaultValue={tablature.instrument || ""} />
+                <input name="id" type="hidden" value={tablature.id}></input>
                 <input name="createdAt" type="hidden" value={tablature.createdAt.toString()}></input>
                 <div className="flex justify-between">
                     <button className="btn btn-primary" name="action" type="submit" value="update">
