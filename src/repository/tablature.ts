@@ -1,9 +1,13 @@
 import { db } from "@/clients/prisma";
 import type { Tablature } from "@/generated/prisma";
 
+export type TablatureSearchQuery = {
+    artist?: string;
+};
+
 export interface TablatureRepositiry {
     /* 一覧取得 */
-    findTablatures(): Promise<Tablature[]>;
+    findTablatures(query: TablatureSearchQuery): Promise<Tablature[]>;
     /* 一件取得 */
     getTablature(id: number): Promise<Tablature>;
     /* 新規作成（作成ボタンの押下で呼び出し。戻り値のIDを元に編集画面に遷移） */
@@ -15,8 +19,12 @@ export interface TablatureRepositiry {
 }
 
 export class NeonTablatureRepository implements TablatureRepositiry {
-    async findTablatures(): Promise<Tablature[]> {
-        return await db.tablature.findMany();
+    async findTablatures(query: TablatureSearchQuery): Promise<Tablature[]> {
+        return await db.tablature.findMany({
+            where: {
+                artist: query.artist,
+            },
+        });
     }
 
     async getTablature(id: number): Promise<any> {

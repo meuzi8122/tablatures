@@ -3,7 +3,7 @@ import { NeonTablatureRepository } from "@/repository/tablature";
 import { TablatureService } from "@/service/tablature";
 
 export default async function IndexPage() {
-    const tablatures = await new TablatureService(new NeonTablatureRepository()).findTablatures();
+    const tablatures = await new TablatureService(new NeonTablatureRepository()).findTablatures({});
 
     return (
         <div className="container mx-auto mt-7">
