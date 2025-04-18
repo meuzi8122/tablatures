@@ -3,11 +3,7 @@ import plugin from "tailwindcss/plugin";
 
 export default {
     content: ["./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
-    daisyui: {
-        themes: ["abyss"],
-    },
     plugins: [
-        require("daisyui"),
         /* 静的コンポーネントスタイルを適用（TailwindCss標準） */
         plugin(function ({ addComponents }) {
             addComponents({
