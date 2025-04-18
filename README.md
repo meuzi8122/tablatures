@@ -2,7 +2,6 @@
 
 - npm ci
 - npm run dev
-- http://xxx.xxx.x.xxx:3000を確認
 
 ## prismaスキーマ更新
 
