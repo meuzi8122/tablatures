@@ -1,12 +1,12 @@
 import Navbar from "@/component/navbar";
-import { SITE_TITLE } from "@/constant/site";
-import "@/styles/globals.css";
-import type { LayoutProps } from "@/types/layout";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/constant/site";
+import "@/style/globals.css";
+import type { LayoutProps } from "@/type/layout";
 import type { Metadata } from "next/types";
 
 export const metadata: Metadata = {
     title: SITE_TITLE,
-    description: "",
+    description: SITE_DESCRIPTION,
 };
 
 export default function RootLayout({ children }: LayoutProps) {
