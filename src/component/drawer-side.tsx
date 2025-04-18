@@ -1,20 +1,9 @@
+import { createTablatureAction } from "@/action/tablature";
 import { signInAction, signOutAction } from "@/action/user";
 import { auth } from "@/auth";
 
 export default async function DrawerSide() {
     const session = await auth();
-
-    // const router = useRouter();
-
-    const handleAddTablatureButtonClick = async () => {
-        // const res = await fetch("/api/tablatures", { method: "POST" });
-        // if (res.status == 201) {
-        //     const { id } = await res.json();
-        //     router.push(`/tablatures/${id}`);
-        // } else {
-        //     alert("新規作成に失敗しました。");
-        // }
-    };
 
     return (
         <div className="drawer-side">
@@ -34,7 +23,11 @@ export default async function DrawerSide() {
                     </li>
                 )}
                 <li>
-                    <a href="#">TAB譜を追加</a>
+                    <form action={createTablatureAction}>
+                        <button name="create" type="submit">
+                            TAB譜を追加
+                        </button>
+                    </form>
                 </li>
                 <li>
                     <a>お気に入りのTAB譜</a>

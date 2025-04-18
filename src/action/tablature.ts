@@ -2,6 +2,7 @@
 
 import { NeonTablatureRepository } from "@/repository/tablature";
 import { TablatureService } from "@/service/tablature";
+import { redirect } from "next/navigation";
 
 export type TablatureActionResult = {
     isSuccess?: boolean;
@@ -55,4 +56,10 @@ async function deleteTablatureAction(formData: any): Promise<TablatureActionResu
     }
 
     return result;
+}
+
+export async function createTablatureAction() {
+    const tablature = await tablatureService.createTablature();
+
+    redirect(`/tablatures/${tablature.id}`);
 }
