@@ -1,4 +1,4 @@
-export default function PlusIcon() {
+export default function Menu() {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ export default function PlusIcon() {
             stroke="currentColor"
             className="size-6"
         >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            <path strokeLinecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
     );
 }
