@@ -1,5 +1,5 @@
-import Navbar from "@/components/navbar";
-import { SITE_TITLE } from "@/constants/site";
+import Navbar from "@/component/navbar";
+import { SITE_TITLE } from "@/constant/site";
 import "@/styles/globals.css";
 import type { LayoutProps } from "@/types/layout";
 import type { Metadata } from "next/types";

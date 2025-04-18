@@ -1,4 +1,4 @@
-import TablatureForm from "@/components/tablature-form";
+import TablatureForm from "@/component/form/tablature/tablature-form";
 import { NeonTablatureRepository } from "@/repository/tablature";
 import { TablatureService } from "@/service/tablature";
 

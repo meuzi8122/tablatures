@@ -122,6 +122,7 @@ exports.Prisma.TablatureScalarFieldEnum = {
   title: 'title',
   artist: 'artist',
   link: 'link',
+  instrument: 'instrument',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

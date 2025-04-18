@@ -1,7 +1,8 @@
 "use client";
 
-import PlusIcon from "@/components/icon/plus-icon";
-import { SITE_TITLE } from "@/constants/site";
+import PlusIcon from "@/component/icon/plus-icon";
+import SearchIcon from "@/component/icon/search-icon";
+import { SITE_TITLE } from "@/constant/site";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -26,6 +27,9 @@ export default function Navbar() {
                 </Link>
             </div>
             <div className="flex-none">
+                <a href="/search" className="btn btn-square btn-ghost">
+                    <SearchIcon />
+                </a>
                 <button className="btn btn-square btn-ghost" onClick={handleAddTablatureButtonClick}>
                     <PlusIcon />
                 </button>

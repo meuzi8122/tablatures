@@ -31,6 +31,7 @@ async function updateTablatureAction(formData: any): Promise<TablatureActionResu
             id: 1,
             title: formData.get("title"),
             artist: formData.get("artist"),
+            instrument: formData.get("instrument"),
             link: formData.get("link"),
             createdAt: new Date(formData.get("createdAt")),
             updatedAt: new Date(),

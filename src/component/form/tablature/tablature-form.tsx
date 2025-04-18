@@ -1,7 +1,9 @@
 "use client";
 
 import { tablatureAction } from "@/app/actions/tablature";
-import TextInput from "@/components/form/text-input";
+import TextInput from "@/component/form/text-input";
+import TrashIcon from "@/component/icon/trash-icon";
+import UpdateIcon from "@/component/icon/update-icon";
 import type { Tablature } from "@/generated/prisma";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
@@ -29,11 +31,13 @@ export default function TablatureForm({ tablature }: Props) {
                 <TextInput name="artist" label="アーティスト名" defaultValue={tablature.artist} />
                 <TextInput name="link" label="TAB譜リンク" defaultValue={tablature.link} />
                 <input name="createdAt" type="hidden" value={tablature.createdAt.toString()}></input>
-                <div className="flex space-x-1">
-                    <button name="action" type="submit" value="update">
+                <div className="flex justify-between">
+                    <button className="btn btn-primary" name="action" type="submit" value="update">
+                        <UpdateIcon />
                         更新
                     </button>
-                    <button name="action" type="submit" value="delete">
+                    <button className="btn btn-error" name="action" type="submit" value="delete">
+                        <TrashIcon />
                         削除
                     </button>
                 </div>

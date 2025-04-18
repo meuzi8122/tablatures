@@ -894,6 +894,7 @@ export namespace Prisma {
     title: string | null
     artist: string | null
     link: string | null
+    instrument: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -903,6 +904,7 @@ export namespace Prisma {
     title: string | null
     artist: string | null
     link: string | null
+    instrument: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -912,6 +914,7 @@ export namespace Prisma {
     title: number
     artist: number
     link: number
+    instrument: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -931,6 +934,7 @@ export namespace Prisma {
     title?: true
     artist?: true
     link?: true
+    instrument?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -940,6 +944,7 @@ export namespace Prisma {
     title?: true
     artist?: true
     link?: true
+    instrument?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -949,6 +954,7 @@ export namespace Prisma {
     title?: true
     artist?: true
     link?: true
+    instrument?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1045,6 +1051,7 @@ export namespace Prisma {
     title: string | null
     artist: string | null
     link: string | null
+    instrument: string | null
     createdAt: Date
     updatedAt: Date
     _count: TablatureCountAggregateOutputType | null
@@ -1073,6 +1080,7 @@ export namespace Prisma {
     title?: boolean
     artist?: boolean
     link?: boolean
+    instrument?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["tablature"]>
@@ -1082,6 +1090,7 @@ export namespace Prisma {
     title?: boolean
     artist?: boolean
     link?: boolean
+    instrument?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["tablature"]>
@@ -1091,6 +1100,7 @@ export namespace Prisma {
     title?: boolean
     artist?: boolean
     link?: boolean
+    instrument?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["tablature"]>
@@ -1100,11 +1110,12 @@ export namespace Prisma {
     title?: boolean
     artist?: boolean
     link?: boolean
+    instrument?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type TablatureOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "artist" | "link" | "createdAt" | "updatedAt", ExtArgs["result"]["tablature"]>
+  export type TablatureOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "artist" | "link" | "instrument" | "createdAt" | "updatedAt", ExtArgs["result"]["tablature"]>
 
   export type $TablaturePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Tablature"
@@ -1114,6 +1125,7 @@ export namespace Prisma {
       title: string | null
       artist: string | null
       link: string | null
+      instrument: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["tablature"]>
@@ -1543,6 +1555,7 @@ export namespace Prisma {
     readonly title: FieldRef<"Tablature", 'String'>
     readonly artist: FieldRef<"Tablature", 'String'>
     readonly link: FieldRef<"Tablature", 'String'>
+    readonly instrument: FieldRef<"Tablature", 'String'>
     readonly createdAt: FieldRef<"Tablature", 'DateTime'>
     readonly updatedAt: FieldRef<"Tablature", 'DateTime'>
   }
@@ -1930,6 +1943,7 @@ export namespace Prisma {
     title: 'title',
     artist: 'artist',
     link: 'link',
+    instrument: 'instrument',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -2033,6 +2047,7 @@ export namespace Prisma {
     title?: StringNullableFilter<"Tablature"> | string | null
     artist?: StringNullableFilter<"Tablature"> | string | null
     link?: StringNullableFilter<"Tablature"> | string | null
+    instrument?: StringNullableFilter<"Tablature"> | string | null
     createdAt?: DateTimeFilter<"Tablature"> | Date | string
     updatedAt?: DateTimeFilter<"Tablature"> | Date | string
   }
@@ -2042,6 +2057,7 @@ export namespace Prisma {
     title?: SortOrderInput | SortOrder
     artist?: SortOrderInput | SortOrder
     link?: SortOrderInput | SortOrder
+    instrument?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2054,6 +2070,7 @@ export namespace Prisma {
     title?: StringNullableFilter<"Tablature"> | string | null
     artist?: StringNullableFilter<"Tablature"> | string | null
     link?: StringNullableFilter<"Tablature"> | string | null
+    instrument?: StringNullableFilter<"Tablature"> | string | null
     createdAt?: DateTimeFilter<"Tablature"> | Date | string
     updatedAt?: DateTimeFilter<"Tablature"> | Date | string
   }, "id">
@@ -2063,6 +2080,7 @@ export namespace Prisma {
     title?: SortOrderInput | SortOrder
     artist?: SortOrderInput | SortOrder
     link?: SortOrderInput | SortOrder
+    instrument?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: TablatureCountOrderByAggregateInput
@@ -2080,6 +2098,7 @@ export namespace Prisma {
     title?: StringNullableWithAggregatesFilter<"Tablature"> | string | null
     artist?: StringNullableWithAggregatesFilter<"Tablature"> | string | null
     link?: StringNullableWithAggregatesFilter<"Tablature"> | string | null
+    instrument?: StringNullableWithAggregatesFilter<"Tablature"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Tablature"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Tablature"> | Date | string
   }
@@ -2088,6 +2107,7 @@ export namespace Prisma {
     title?: string | null
     artist?: string | null
     link?: string | null
+    instrument?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2097,6 +2117,7 @@ export namespace Prisma {
     title?: string | null
     artist?: string | null
     link?: string | null
+    instrument?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2105,6 +2126,7 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     artist?: NullableStringFieldUpdateOperationsInput | string | null
     link?: NullableStringFieldUpdateOperationsInput | string | null
+    instrument?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2114,6 +2136,7 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     artist?: NullableStringFieldUpdateOperationsInput | string | null
     link?: NullableStringFieldUpdateOperationsInput | string | null
+    instrument?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2123,6 +2146,7 @@ export namespace Prisma {
     title?: string | null
     artist?: string | null
     link?: string | null
+    instrument?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2131,6 +2155,7 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     artist?: NullableStringFieldUpdateOperationsInput | string | null
     link?: NullableStringFieldUpdateOperationsInput | string | null
+    instrument?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2140,6 +2165,7 @@ export namespace Prisma {
     title?: NullableStringFieldUpdateOperationsInput | string | null
     artist?: NullableStringFieldUpdateOperationsInput | string | null
     link?: NullableStringFieldUpdateOperationsInput | string | null
+    instrument?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2191,6 +2217,7 @@ export namespace Prisma {
     title?: SortOrder
     artist?: SortOrder
     link?: SortOrder
+    instrument?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2204,6 +2231,7 @@ export namespace Prisma {
     title?: SortOrder
     artist?: SortOrder
     link?: SortOrder
+    instrument?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2213,6 +2241,7 @@ export namespace Prisma {
     title?: SortOrder
     artist?: SortOrder
     link?: SortOrder
+    instrument?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }

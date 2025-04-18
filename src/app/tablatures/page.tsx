@@ -2,7 +2,7 @@ import TablatureList from "@/component/list/tablature/tablature-list";
 import { NeonTablatureRepository } from "@/repository/tablature";
 import { TablatureService } from "@/service/tablature";
 
-export default async function IndexPage() {
+export default async function TablaturePage() {
     const tablatures = await new TablatureService(new NeonTablatureRepository()).findTablatures();
 
     return (

@@ -1,4 +1,4 @@
-import TablatureTable from "@/components/tablature-table";
+import TablatureTable from "@/component/tablature-table";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
