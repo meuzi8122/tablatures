@@ -1,8 +1,9 @@
 "use server";
 
+import { auth } from "@/auth";
 import { NeonTablatureRepository } from "@/repository/tablature";
 import { TablatureService } from "@/service/tablature";
-import { redirect } from "next/navigation";
+import { redirect, unauthorized } from "next/navigation";
 
 export type TablatureActionResult = {
     isSuccess?: boolean;
@@ -11,17 +12,23 @@ export type TablatureActionResult = {
 
 const tablatureService = new TablatureService(new NeonTablatureRepository());
 
-export async function tablatureAction(_: any, formData: any): Promise<TablatureActionResult> {
+export async function tablatureEditAction(_: any, formData: any): Promise<TablatureActionResult> {
     if (formData.get("action") == "update") {
         return updateTablatureAction(formData);
     } else if (formData.get("action") == "delete") {
         return deleteTablatureAction(formData);
-    }
+    } // TODO: 公開・下書きの切り替え
 
     return {};
 }
 
 async function updateTablatureAction(formData: any): Promise<TablatureActionResult> {
+    const session = await auth();
+
+    if (!session) {
+        unauthorized();
+    }
+
     let result: TablatureActionResult = { isSuccess: true, message: "TAB譜の更新に成功しました。" };
 
     /* ストレージにファイルをアップロードした後、アップロード先のurlをtablature.linkに代入 */
@@ -30,7 +37,7 @@ async function updateTablatureAction(formData: any): Promise<TablatureActionResu
     try {
         await tablatureService.updateTablature({
             id: formData.get("id"),
-            userId: formData.get("userId"),
+            userId: session?.user.id,
             title: formData.get("title"),
             artist: formData.get("artist"),
             instrument: formData.get("instrument"),
@@ -60,7 +67,10 @@ async function deleteTablatureAction(formData: any): Promise<TablatureActionResu
 }
 
 export async function createTablatureAction() {
-    const tablature = await tablatureService.createTablature();
+    const session = await auth();
 
-    redirect(`/tablatures/${tablature.id}`);
+    if (session?.user.id) {
+        const tablature = await tablatureService.createTablature(session.user.id);
+        redirect(`/tablatures/${tablature.id}`);
+    }
 }

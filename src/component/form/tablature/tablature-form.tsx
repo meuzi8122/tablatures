@@ -1,6 +1,6 @@
 "use client";
 
-import { tablatureAction } from "@/action/tablature";
+import { tablatureEditAction } from "@/action/tablature";
 import Select, { Option } from "@/component/form/select";
 import TextInput from "@/component/form/text-input";
 import TrashIcon from "@/component/icon/trash-icon";
@@ -21,7 +21,7 @@ const INSTRUMENTS: Option[] = [
 export default function TablatureForm({ tablature }: Props) {
     const router = useRouter();
 
-    const [result, action, isPending] = useActionState(tablatureAction, null);
+    const [result, action, isPending] = useActionState(tablatureEditAction, null);
 
     useEffect(() => {
         if (result?.isSuccess != undefined) {
@@ -38,7 +38,6 @@ export default function TablatureForm({ tablature }: Props) {
                 <TextInput name="link" label="TAB譜リンク" defaultValue={tablature.link} />
                 <Select name="instrument" options={INSTRUMENTS} defaultValue={tablature.instrument || ""} />
                 <input name="id" type="hidden" value={tablature.id}></input>
-                <input name="userId" type="hidden" value={tablature.userId}></input>
                 <input name="createdAt" type="hidden" value={tablature.createdAt.toString()}></input>
                 <div className="flex justify-between">
                     <button className="btn btn-primary" name="action" type="submit" value="update">

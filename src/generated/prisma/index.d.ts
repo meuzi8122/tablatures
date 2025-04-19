@@ -1083,12 +1083,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     tablatures: number
-    Bookmark: number
+    bookmark: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tablatures?: boolean | UserCountOutputTypeCountTablaturesArgs
-    Bookmark?: boolean | UserCountOutputTypeCountBookmarkArgs
+    bookmark?: boolean | UserCountOutputTypeCountBookmarkArgs
   }
 
   // Custom InputTypes
@@ -2477,7 +2477,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     tablatures?: boolean | User$tablaturesArgs<ExtArgs>
-    Bookmark?: boolean | User$BookmarkArgs<ExtArgs>
+    bookmark?: boolean | User$bookmarkArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2505,7 +2505,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tablatures?: boolean | User$tablaturesArgs<ExtArgs>
-    Bookmark?: boolean | User$BookmarkArgs<ExtArgs>
+    bookmark?: boolean | User$bookmarkArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2515,7 +2515,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       tablatures: Prisma.$TablaturePayload<ExtArgs>[]
-      Bookmark: Prisma.$BookmarkPayload<ExtArgs>[]
+      bookmark: Prisma.$BookmarkPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2917,7 +2917,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     tablatures<T extends User$tablaturesArgs<ExtArgs> = {}>(args?: Subset<T, User$tablaturesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TablaturePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    Bookmark<T extends User$BookmarkArgs<ExtArgs> = {}>(args?: Subset<T, User$BookmarkArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    bookmark<T extends User$bookmarkArgs<ExtArgs> = {}>(args?: Subset<T, User$bookmarkArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3363,9 +3363,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.Bookmark
+   * User.bookmark
    */
-  export type User$BookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$bookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Bookmark
      */
@@ -4706,7 +4706,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     tablatures?: TablatureListRelationFilter
-    Bookmark?: BookmarkListRelationFilter
+    bookmark?: BookmarkListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4715,7 +4715,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     tablatures?: TablatureOrderByRelationAggregateInput
-    Bookmark?: BookmarkOrderByRelationAggregateInput
+    bookmark?: BookmarkOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4727,7 +4727,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     tablatures?: TablatureListRelationFilter
-    Bookmark?: BookmarkListRelationFilter
+    bookmark?: BookmarkListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -4884,7 +4884,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     tablatures?: TablatureCreateNestedManyWithoutUserInput
-    Bookmark?: BookmarkCreateNestedManyWithoutUserInput
+    bookmark?: BookmarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4893,7 +4893,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     tablatures?: TablatureUncheckedCreateNestedManyWithoutUserInput
-    Bookmark?: BookmarkUncheckedCreateNestedManyWithoutUserInput
+    bookmark?: BookmarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -4901,7 +4901,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tablatures?: TablatureUpdateManyWithoutUserNestedInput
-    Bookmark?: BookmarkUpdateManyWithoutUserNestedInput
+    bookmark?: BookmarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4910,7 +4910,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tablatures?: TablatureUncheckedUpdateManyWithoutUserNestedInput
-    Bookmark?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
+    bookmark?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -5554,7 +5554,7 @@ export namespace Prisma {
     email: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Bookmark?: BookmarkCreateNestedManyWithoutUserInput
+    bookmark?: BookmarkCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTablaturesInput = {
@@ -5562,7 +5562,7 @@ export namespace Prisma {
     email: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    Bookmark?: BookmarkUncheckedCreateNestedManyWithoutUserInput
+    bookmark?: BookmarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTablaturesInput = {
@@ -5604,7 +5604,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Bookmark?: BookmarkUpdateManyWithoutUserNestedInput
+    bookmark?: BookmarkUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTablaturesInput = {
@@ -5612,7 +5612,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Bookmark?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
+    bookmark?: BookmarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type BookmarkUpsertWithWhereUniqueWithoutTablatureInput = {

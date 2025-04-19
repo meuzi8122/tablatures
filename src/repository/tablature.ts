@@ -22,7 +22,7 @@ export interface TablatureRepositiry {
     /* 一件取得 */
     getTablature(id: number): Promise<Tablature>;
     /* 新規作成（作成ボタンの押下で呼び出し。戻り値のIDを元に編集画面に遷移） */
-    createTablature(): Promise<Tablature>;
+    createTablature(userId: number): Promise<Tablature>;
     /* 更新 */
     updateTablature(tablature: Tablature): Promise<Tablature>;
     /* 削除 */
@@ -60,8 +60,8 @@ export class NeonTablatureRepository implements TablatureRepositiry {
         return db.tablature.findUnique({ where: { id } });
     }
 
-    async createTablature(): Promise<Tablature> {
-        return await db.tablature.create({});
+    async createTablature(userId: number): Promise<Tablature> {
+        return await db.tablature.create({ data: { userId } });
     }
 
     async updateTablature(tablature: Tablature): Promise<Tablature> {

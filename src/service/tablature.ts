@@ -12,8 +12,8 @@ export class TablatureService {
         return this.repository.getTablature(id);
     }
 
-    async createTablature(): Promise<Tablature> {
-        return this.repository.createTablature();
+    async createTablature(userId: number): Promise<Tablature> {
+        return this.repository.createTablature(userId);
     }
 
     async updateTablature(tablature: Tablature): Promise<Tablature> {

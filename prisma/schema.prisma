@@ -33,7 +33,7 @@ model User {
   tablatures Tablature[]
   createdAt  DateTime    @default(now()) @map("created_at")
   updatedAt  DateTime    @default(now()) @updatedAt @map("updated_at")
-  Bookmark   Bookmark[]
+  bookmark   Bookmark[]
 }
 
 model Bookmark {
