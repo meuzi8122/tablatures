@@ -23,7 +23,7 @@ model Tablature {
   createdAt  DateTime @default(now()) @map("created_at")
   updatedAt  DateTime @default(now()) @updatedAt @map("updated_at")
   User       User?    @relation(fields: [userId], references: [id])
-  userId     Int?
+  userId     Int?     @map("user_id")
 }
 
 model User {

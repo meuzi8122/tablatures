@@ -1,6 +1,6 @@
-"use client";
-
+import { auth } from "@/auth";
 import BookmarkIcon from "@/component/icon/bookmark-icon";
+import EditIcon from "@/component/icon/edit-icon";
 import type { Tablature } from "@/generated/prisma";
 import Image from "next/image";
 
@@ -8,10 +8,8 @@ type Props = {
     tablature: Tablature;
 };
 
-export function TablatureListItem({ tablature }: Props) {
-    const handleFavoriteButtonClick = () => {
-        alert("TAB譜のブックマーク機能は今後実装予定です。");
-    };
+export async function TablatureListItem({ tablature }: Props) {
+    const session = await auth();
 
     return (
         <li className="list-row">
@@ -26,9 +24,17 @@ export function TablatureListItem({ tablature }: Props) {
                     {tablature.artist}
                 </a>
             </div>
-            <button className="btn btn-square btn-ghost" onClick={handleFavoriteButtonClick}>
-                <BookmarkIcon />
-            </button>
+            {session?.user.id == tablature.userId ? (
+                <a href={`/tablatures/${tablature.id}`} className="btn btn-square btn-ghost">
+                    <EditIcon />
+                </a>
+            ) : (
+                <form>
+                    <button className="btn btn-square btn-ghost">
+                        <BookmarkIcon />
+                    </button>
+                </form>
+            )}
         </li>
     );
 }
