@@ -6,6 +6,8 @@ const PAGE_SIZE = 10;
 export type TablatureCollection = {
     tablatures: Tablature[];
     total: number;
+    start: number;
+    end: number;
     hasNext: boolean;
 };
 
@@ -38,6 +40,8 @@ export class NeonTablatureRepository implements TablatureRepositiry {
         const currentPage = query.page ? query.page : 1;
         const maxPage = Math.ceil(total / PAGE_SIZE);
 
+        const skip = (currentPage - 1) * PAGE_SIZE;
+
         const tablatures = await db.tablature.findMany({
             where: {
                 artist: query.artist,
@@ -46,7 +50,10 @@ export class NeonTablatureRepository implements TablatureRepositiry {
             take: PAGE_SIZE, //10件取得
         });
 
-        return { total, tablatures, hasNext: currentPage < maxPage };
+        const start = skip + 1;
+        const end = tablatures.length < PAGE_SIZE ? skip + tablatures.length : skip + PAGE_SIZE;
+
+        return { total, tablatures, start, end, hasNext: currentPage < maxPage };
     }
 
     async getTablature(id: number): Promise<any> {
