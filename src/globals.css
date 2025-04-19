@@ -3,3 +3,21 @@
 @plugin "daisyui" {
     themes: light --default;
 }
+
+@layer components {
+    .container {
+        max-width: 90%;
+        @screen sm {
+            max-width: 600px;
+        }
+        @screen md {
+            max-width: 700px;
+        }
+        @screen lg {
+            max-width: 900px;
+        }
+        @screen xl {
+            max-width: 1200px;
+        }
+    }
+}
