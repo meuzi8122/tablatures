@@ -1,6 +1,6 @@
 "use client";
 
-import StarIcon from "@/component/icon/star-icon";
+import BookmarkIcon from "@/component/icon/bookmark-icon";
 import type { Tablature } from "@/generated/prisma";
 import Image from "next/image";
 
@@ -10,7 +10,7 @@ type Props = {
 
 export function TablatureListItem({ tablature }: Props) {
     const handleFavoriteButtonClick = () => {
-        alert("お気に入り機能は今後実装予定です。");
+        alert("TAB譜のブックマーク機能は今後実装予定です。");
     };
 
     return (
@@ -27,7 +27,7 @@ export function TablatureListItem({ tablature }: Props) {
                 </a>
             </div>
             <button className="btn btn-square btn-ghost" onClick={handleFavoriteButtonClick}>
-                <StarIcon />
+                <BookmarkIcon />
             </button>
         </li>
     );

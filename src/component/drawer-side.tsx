@@ -25,12 +25,12 @@ export default async function DrawerSide() {
                 <li>
                     <form action={createTablatureAction}>
                         <button name="create" type="submit">
-                            TAB譜を追加
+                            TAB譜を投稿
                         </button>
                     </form>
                 </li>
                 <li>
-                    <a>お気に入りのTAB譜</a>
+                    <a>ブックマークしたTAB譜</a>
                 </li>
                 <li>
                     <a>このサイトについて</a>
