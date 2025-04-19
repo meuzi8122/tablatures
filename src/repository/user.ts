@@ -7,6 +7,14 @@ export interface UserReposiytory {
 
 export class NeonUserRepostiroy implements UserReposiytory {
     async createUser(email: string): Promise<User> {
-        return await db.user.create({ data: { email } });
+        const user = await db.user.findUnique({
+            where: { email },
+        });
+
+        if (user) {
+            return user;
+        } else {
+            return await db.user.create({ data: { email } });
+        }
     }
 }
