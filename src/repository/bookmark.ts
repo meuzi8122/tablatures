@@ -2,18 +2,21 @@ import { db } from "@/clients/prisma";
 import { Bookmark } from "@/generated/prisma";
 
 export interface BookmarkRepository {
+    findBookmarks(userId: number, tablatureIds: number[]): Promise<Bookmark[]>;
     createBookmark(userId: number, tablatureId: number): Promise<Bookmark>;
-    deleteBookmark(id: number): Promise<number>;
+    deleteBookmark(userId: number, tablatureId: number): Promise<Bookmark>;
 }
 
 export class NeonBookmarkRepository implements BookmarkRepository {
+    async findBookmarks(userId: number, tablatureIds: number[]): Promise<Bookmark[]> {
+        return await db.bookmark.findMany({ where: { userId, tablatureId: { in: tablatureIds } } });
+    }
+
     async createBookmark(userId: number, tablatureId: number): Promise<Bookmark> {
         return await db.bookmark.create({ data: { userId, tablatureId } });
     }
 
-    async deleteBookmark(id: number): Promise<number> {
-        await db.bookmark.delete({ where: { id } });
-
-        return id;
+    async deleteBookmark(userId: number, tablatureId: number): Promise<Bookmark> {
+        return db.bookmark.delete({ where: { userId_tablatureId: { userId, tablatureId } } });
     }
 }

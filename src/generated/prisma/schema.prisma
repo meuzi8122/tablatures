@@ -37,9 +37,10 @@ model User {
 }
 
 model Bookmark {
-  id          Int       @id @default(autoincrement())
   user        User      @relation(fields: [userId], references: [id])
   tablature   Tablature @relation(fields: [tablatureId], references: [id])
   userId      Int       @map("user_id")
   tablatureId Int       @map("tablature_id")
+
+  @@unique([userId, tablatureId])
 }

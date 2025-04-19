@@ -3418,31 +3418,26 @@ export namespace Prisma {
   }
 
   export type BookmarkAvgAggregateOutputType = {
-    id: number | null
     userId: number | null
     tablatureId: number | null
   }
 
   export type BookmarkSumAggregateOutputType = {
-    id: number | null
     userId: number | null
     tablatureId: number | null
   }
 
   export type BookmarkMinAggregateOutputType = {
-    id: number | null
     userId: number | null
     tablatureId: number | null
   }
 
   export type BookmarkMaxAggregateOutputType = {
-    id: number | null
     userId: number | null
     tablatureId: number | null
   }
 
   export type BookmarkCountAggregateOutputType = {
-    id: number
     userId: number
     tablatureId: number
     _all: number
@@ -3450,31 +3445,26 @@ export namespace Prisma {
 
 
   export type BookmarkAvgAggregateInputType = {
-    id?: true
     userId?: true
     tablatureId?: true
   }
 
   export type BookmarkSumAggregateInputType = {
-    id?: true
     userId?: true
     tablatureId?: true
   }
 
   export type BookmarkMinAggregateInputType = {
-    id?: true
     userId?: true
     tablatureId?: true
   }
 
   export type BookmarkMaxAggregateInputType = {
-    id?: true
     userId?: true
     tablatureId?: true
   }
 
   export type BookmarkCountAggregateInputType = {
-    id?: true
     userId?: true
     tablatureId?: true
     _all?: true
@@ -3567,7 +3557,6 @@ export namespace Prisma {
   }
 
   export type BookmarkGroupByOutputType = {
-    id: number
     userId: number
     tablatureId: number
     _count: BookmarkCountAggregateOutputType | null
@@ -3592,7 +3581,6 @@ export namespace Prisma {
 
 
   export type BookmarkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     userId?: boolean
     tablatureId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -3600,7 +3588,6 @@ export namespace Prisma {
   }, ExtArgs["result"]["bookmark"]>
 
   export type BookmarkSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     userId?: boolean
     tablatureId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -3608,7 +3595,6 @@ export namespace Prisma {
   }, ExtArgs["result"]["bookmark"]>
 
   export type BookmarkSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
     userId?: boolean
     tablatureId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -3616,12 +3602,11 @@ export namespace Prisma {
   }, ExtArgs["result"]["bookmark"]>
 
   export type BookmarkSelectScalar = {
-    id?: boolean
     userId?: boolean
     tablatureId?: boolean
   }
 
-  export type BookmarkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "tablatureId", ExtArgs["result"]["bookmark"]>
+  export type BookmarkOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"userId" | "tablatureId", ExtArgs["result"]["bookmark"]>
   export type BookmarkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     tablature?: boolean | TablatureDefaultArgs<ExtArgs>
@@ -3642,7 +3627,6 @@ export namespace Prisma {
       tablature: Prisma.$TablaturePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
       userId: number
       tablatureId: number
     }, ExtArgs["result"]["bookmark"]>
@@ -3728,8 +3712,8 @@ export namespace Prisma {
      * // Get first 10 Bookmarks
      * const bookmarks = await prisma.bookmark.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const bookmarkWithIdOnly = await prisma.bookmark.findMany({ select: { id: true } })
+     * // Only select the `userId`
+     * const bookmarkWithUserIdOnly = await prisma.bookmark.findMany({ select: { userId: true } })
      * 
      */
     findMany<T extends BookmarkFindManyArgs>(args?: SelectSubset<T, BookmarkFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookmarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -3773,9 +3757,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Bookmarks and only return the `id`
-     * const bookmarkWithIdOnly = await prisma.bookmark.createManyAndReturn({
-     *   select: { id: true },
+     * // Create many Bookmarks and only return the `userId`
+     * const bookmarkWithUserIdOnly = await prisma.bookmark.createManyAndReturn({
+     *   select: { userId: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -3864,9 +3848,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Bookmarks and only return the `id`
-     * const bookmarkWithIdOnly = await prisma.bookmark.updateManyAndReturn({
-     *   select: { id: true },
+     * // Update zero or more Bookmarks and only return the `userId`
+     * const bookmarkWithUserIdOnly = await prisma.bookmark.updateManyAndReturn({
+     *   select: { userId: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4070,7 +4054,6 @@ export namespace Prisma {
    * Fields of the Bookmark model
    */
   interface BookmarkFieldRefs {
-    readonly id: FieldRef<"Bookmark", 'Int'>
     readonly userId: FieldRef<"Bookmark", 'Int'>
     readonly tablatureId: FieldRef<"Bookmark", 'Int'>
   }
@@ -4526,7 +4509,6 @@ export namespace Prisma {
 
 
   export const BookmarkScalarFieldEnum: {
-    id: 'id',
     userId: 'userId',
     tablatureId: 'tablatureId'
   };
@@ -4756,7 +4738,6 @@ export namespace Prisma {
     AND?: BookmarkWhereInput | BookmarkWhereInput[]
     OR?: BookmarkWhereInput[]
     NOT?: BookmarkWhereInput | BookmarkWhereInput[]
-    id?: IntFilter<"Bookmark"> | number
     userId?: IntFilter<"Bookmark"> | number
     tablatureId?: IntFilter<"Bookmark"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -4764,7 +4745,6 @@ export namespace Prisma {
   }
 
   export type BookmarkOrderByWithRelationInput = {
-    id?: SortOrder
     userId?: SortOrder
     tablatureId?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -4772,7 +4752,7 @@ export namespace Prisma {
   }
 
   export type BookmarkWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    userId_tablatureId?: BookmarkUserIdTablatureIdCompoundUniqueInput
     AND?: BookmarkWhereInput | BookmarkWhereInput[]
     OR?: BookmarkWhereInput[]
     NOT?: BookmarkWhereInput | BookmarkWhereInput[]
@@ -4780,10 +4760,9 @@ export namespace Prisma {
     tablatureId?: IntFilter<"Bookmark"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     tablature?: XOR<TablatureScalarRelationFilter, TablatureWhereInput>
-  }, "id">
+  }, "userId_tablatureId">
 
   export type BookmarkOrderByWithAggregationInput = {
-    id?: SortOrder
     userId?: SortOrder
     tablatureId?: SortOrder
     _count?: BookmarkCountOrderByAggregateInput
@@ -4797,7 +4776,6 @@ export namespace Prisma {
     AND?: BookmarkScalarWhereWithAggregatesInput | BookmarkScalarWhereWithAggregatesInput[]
     OR?: BookmarkScalarWhereWithAggregatesInput[]
     NOT?: BookmarkScalarWhereWithAggregatesInput | BookmarkScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Bookmark"> | number
     userId?: IntWithAggregatesFilter<"Bookmark"> | number
     tablatureId?: IntWithAggregatesFilter<"Bookmark"> | number
   }
@@ -4939,7 +4917,6 @@ export namespace Prisma {
   }
 
   export type BookmarkUncheckedCreateInput = {
-    id?: number
     userId: number
     tablatureId: number
   }
@@ -4950,13 +4927,11 @@ export namespace Prisma {
   }
 
   export type BookmarkUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     tablatureId?: IntFieldUpdateOperationsInput | number
   }
 
   export type BookmarkCreateManyInput = {
-    id?: number
     userId: number
     tablatureId: number
   }
@@ -4966,7 +4941,6 @@ export namespace Prisma {
   }
 
   export type BookmarkUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     tablatureId?: IntFieldUpdateOperationsInput | number
   }
@@ -5196,32 +5170,32 @@ export namespace Prisma {
     isNot?: TablatureWhereInput
   }
 
+  export type BookmarkUserIdTablatureIdCompoundUniqueInput = {
+    userId: number
+    tablatureId: number
+  }
+
   export type BookmarkCountOrderByAggregateInput = {
-    id?: SortOrder
     userId?: SortOrder
     tablatureId?: SortOrder
   }
 
   export type BookmarkAvgOrderByAggregateInput = {
-    id?: SortOrder
     userId?: SortOrder
     tablatureId?: SortOrder
   }
 
   export type BookmarkMaxOrderByAggregateInput = {
-    id?: SortOrder
     userId?: SortOrder
     tablatureId?: SortOrder
   }
 
   export type BookmarkMinOrderByAggregateInput = {
-    id?: SortOrder
     userId?: SortOrder
     tablatureId?: SortOrder
   }
 
   export type BookmarkSumOrderByAggregateInput = {
-    id?: SortOrder
     userId?: SortOrder
     tablatureId?: SortOrder
   }
@@ -5575,7 +5549,6 @@ export namespace Prisma {
   }
 
   export type BookmarkUncheckedCreateWithoutTablatureInput = {
-    id?: number
     userId: number
   }
 
@@ -5635,7 +5608,6 @@ export namespace Prisma {
     AND?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
     OR?: BookmarkScalarWhereInput[]
     NOT?: BookmarkScalarWhereInput | BookmarkScalarWhereInput[]
-    id?: IntFilter<"Bookmark"> | number
     userId?: IntFilter<"Bookmark"> | number
     tablatureId?: IntFilter<"Bookmark"> | number
   }
@@ -5676,7 +5648,6 @@ export namespace Prisma {
   }
 
   export type BookmarkUncheckedCreateWithoutUserInput = {
-    id?: number
     tablatureId: number
   }
 
@@ -5841,7 +5812,6 @@ export namespace Prisma {
   }
 
   export type BookmarkCreateManyTablatureInput = {
-    id?: number
     userId: number
   }
 
@@ -5850,12 +5820,10 @@ export namespace Prisma {
   }
 
   export type BookmarkUncheckedUpdateWithoutTablatureInput = {
-    id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type BookmarkUncheckedUpdateManyWithoutTablatureInput = {
-    id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -5870,7 +5838,6 @@ export namespace Prisma {
   }
 
   export type BookmarkCreateManyUserInput = {
-    id?: number
     tablatureId: number
   }
 
@@ -5910,12 +5877,10 @@ export namespace Prisma {
   }
 
   export type BookmarkUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
     tablatureId?: IntFieldUpdateOperationsInput | number
   }
 
   export type BookmarkUncheckedUpdateManyWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
     tablatureId?: IntFieldUpdateOperationsInput | number
   }
 

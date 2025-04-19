@@ -136,7 +136,6 @@ exports.Prisma.UserScalarFieldEnum = {
 };
 
 exports.Prisma.BookmarkScalarFieldEnum = {
-  id: 'id',
   userId: 'userId',
   tablatureId: 'tablatureId'
 };
