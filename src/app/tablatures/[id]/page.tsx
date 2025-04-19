@@ -1,14 +1,21 @@
+import { auth } from "@/auth";
 import TablatureForm from "@/component/form/tablature/tablature-form";
 import { NeonTablatureRepository } from "@/repository/tablature";
 import { TablatureService } from "@/service/tablature";
+import { redirect } from "next/navigation";
 
 type Props = {
     params: Promise<{
-        id: string;
+        id: string; // 数値型を渡しても必ず文字列になる
     }>;
 };
 
 export default async function TablatureEditPage({ params }: Props) {
+    const session = await auth();
+    if (!session) {
+        redirect("/");
+    }
+
     const tablatureService = new TablatureService(new NeonTablatureRepository());
 
     const { id } = await params;

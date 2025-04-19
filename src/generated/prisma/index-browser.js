@@ -124,6 +124,14 @@ exports.Prisma.TablatureScalarFieldEnum = {
   link: 'link',
   instrument: 'instrument',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
@@ -144,7 +152,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Tablature: 'Tablature'
+  Tablature: 'Tablature',
+  User: 'User'
 };
 
 /**
