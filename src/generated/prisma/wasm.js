@@ -135,6 +135,12 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.BookmarkScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  tablatureId: 'tablatureId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -153,7 +159,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   Tablature: 'Tablature',
-  User: 'User'
+  User: 'User',
+  Bookmark: 'Bookmark'
 };
 
 /**

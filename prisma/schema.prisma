@@ -15,15 +15,16 @@ datasource db {
 }
 
 model Tablature {
-  id         Int      @id @default(autoincrement())
+  id         Int        @id @default(autoincrement())
   title      String?
   artist     String?
   link       String?
   instrument String?
-  createdAt  DateTime @default(now()) @map("created_at")
-  updatedAt  DateTime @default(now()) @updatedAt @map("updated_at")
-  User       User?    @relation(fields: [userId], references: [id])
-  userId     Int?     @map("user_id")
+  createdAt  DateTime   @default(now()) @map("created_at")
+  updatedAt  DateTime   @default(now()) @updatedAt @map("updated_at")
+  user       User       @relation(fields: [userId], references: [id])
+  userId     Int        @map("user_id")
+  Bookmark   Bookmark[]
 }
 
 model User {
@@ -32,4 +33,13 @@ model User {
   tablatures Tablature[]
   createdAt  DateTime    @default(now()) @map("created_at")
   updatedAt  DateTime    @default(now()) @updatedAt @map("updated_at")
+  Bookmark   Bookmark[]
+}
+
+model Bookmark {
+  id          Int       @id @default(autoincrement())
+  user        User      @relation(fields: [userId], references: [id])
+  tablature   Tablature @relation(fields: [tablatureId], references: [id])
+  userId      Int       @map("user_id")
+  tablatureId Int       @map("tablature_id")
 }
