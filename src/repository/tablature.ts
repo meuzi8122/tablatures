@@ -56,8 +56,14 @@ export class NeonTablatureRepository implements TablatureRepositiry {
         return { total, tablatures, start, end, hasNext: currentPage < maxPage };
     }
 
-    async getTablature(id: number): Promise<any> {
-        return db.tablature.findUnique({ where: { id } });
+    async getTablature(id: number): Promise<Tablature> {
+        const tablature = db.tablature.findUnique({ where: { id } });
+
+        if (!tablature) {
+            return tablature;
+        } else {
+            throw Error("Not Found");
+        }
     }
 
     async createTablature(userId: number): Promise<Tablature> {
