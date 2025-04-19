@@ -1,10 +1,10 @@
 import type { Tablature } from "@/generated/prisma";
-import { TablatureRepositiry, TablatureSearchQuery } from "@/repository/tablature";
+import { TablatureCollection, TablatureQuery, TablatureRepositiry } from "@/repository/tablature";
 
 export class TablatureService {
     constructor(private repository: TablatureRepositiry) {}
 
-    async findTablatures(query: TablatureSearchQuery): Promise<Tablature[]> {
+    async findTablatures(query: TablatureQuery): Promise<TablatureCollection> {
         return this.repository.findTablatures(query);
     }
 

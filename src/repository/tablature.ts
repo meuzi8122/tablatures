@@ -1,13 +1,22 @@
 import { db } from "@/clients/prisma";
 import type { Tablature } from "@/generated/prisma";
 
-export type TablatureSearchQuery = {
+const PAGE_SIZE = 10;
+
+export type TablatureCollection = {
+    tablatures: Tablature[];
+    total: number;
+    hasNext: boolean;
+};
+
+export type TablatureQuery = {
     artist?: string;
+    page?: number;
 };
 
 export interface TablatureRepositiry {
     /* 一覧取得 */
-    findTablatures(query: TablatureSearchQuery): Promise<Tablature[]>;
+    findTablatures(query: TablatureQuery): Promise<TablatureCollection>;
     /* 一件取得 */
     getTablature(id: number): Promise<Tablature>;
     /* 新規作成（作成ボタンの押下で呼び出し。戻り値のIDを元に編集画面に遷移） */
@@ -19,12 +28,25 @@ export interface TablatureRepositiry {
 }
 
 export class NeonTablatureRepository implements TablatureRepositiry {
-    async findTablatures(query: TablatureSearchQuery): Promise<Tablature[]> {
-        return await db.tablature.findMany({
+    async findTablatures(query: TablatureQuery): Promise<TablatureCollection> {
+        const total = await db.tablature.count({
             where: {
                 artist: query.artist,
             },
         });
+
+        const currentPage = query.page ? query.page : 1;
+        const maxPage = Math.ceil(total / PAGE_SIZE);
+
+        const tablatures = await db.tablature.findMany({
+            where: {
+                artist: query.artist,
+            },
+            skip: (currentPage - 1) * PAGE_SIZE,
+            take: PAGE_SIZE, //10件取得
+        });
+
+        return { total, tablatures, hasNext: currentPage < maxPage };
     }
 
     async getTablature(id: number): Promise<any> {
