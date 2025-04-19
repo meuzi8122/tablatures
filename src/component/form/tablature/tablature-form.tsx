@@ -38,6 +38,7 @@ export default function TablatureForm({ tablature }: Props) {
                 <TextInput name="link" label="TAB譜リンク" defaultValue={tablature.link} />
                 <Select name="instrument" options={INSTRUMENTS} defaultValue={tablature.instrument || ""} />
                 <input name="id" type="hidden" value={tablature.id}></input>
+                <input name="userId" type="hidden" value={tablature.userId}></input>
                 <input name="createdAt" type="hidden" value={tablature.createdAt.toString()}></input>
                 <div className="flex justify-between">
                     <button className="btn btn-primary" name="action" type="submit" value="update">

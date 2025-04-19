@@ -30,6 +30,7 @@ async function updateTablatureAction(formData: any): Promise<TablatureActionResu
     try {
         await tablatureService.updateTablature({
             id: formData.get("id"),
+            userId: formData.get("userId"),
             title: formData.get("title"),
             artist: formData.get("artist"),
             instrument: formData.get("instrument"),
