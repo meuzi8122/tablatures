@@ -1,2 +1,2 @@
-export const SITE_TITLE = "Tablatures";
-export const SITE_DESCRIPTION = "ギター・ベース向けTAB譜のまとめ";
+export const SITE_TITLE = "TablatureDB";
+export const SITE_DESCRIPTION = "ギター・ベースTAB譜";
