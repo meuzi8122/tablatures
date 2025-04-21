@@ -32,9 +32,6 @@ export default async function DrawerSide() {
                 <li>
                     <a href="/bookmarks">ブックマークしたTAB譜</a>
                 </li>
-                <li>
-                    <a>このサイトについて</a>
-                </li>
             </ul>
         </div>
     );
