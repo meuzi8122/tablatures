@@ -30,7 +30,7 @@ export default async function DrawerSide() {
                     </form>
                 </li>
                 <li>
-                    <a>ブックマークしたTAB譜</a>
+                    <a href="/bookmarks">ブックマークしたTAB譜</a>
                 </li>
                 <li>
                     <a>このサイトについて</a>
