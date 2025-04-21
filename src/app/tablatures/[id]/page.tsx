@@ -16,11 +16,9 @@ export default async function TablatureEditPage({ params }: Props) {
         redirect("/");
     }
 
-    const tablatureService = new TablatureService(new NeonTablatureRepository());
-
     const { id } = await params;
 
-    const tablature = await tablatureService.getTablature(Number(id));
+    const tablature = await new TablatureService(new NeonTablatureRepository()).getTablature(Number(id));
 
     return (
         <div className="container mx-auto">
