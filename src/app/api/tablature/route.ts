@@ -10,7 +10,6 @@ export const POST = auth(async function POST(req) {
 
     try {
         const tablature = await new TablatureService(new NeonTablatureRepository()).createTablature(req.auth.user.id);
-        console.log(tablature);
         return NextResponse.json({ tablature }, { status: 201 });
     } catch (error) {
         console.log(error);
