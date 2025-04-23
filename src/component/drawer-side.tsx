@@ -22,7 +22,7 @@ export default function DrawerSide() {
             return;
         }
 
-        const res = await fetch("/api/tablature", { method: "POST" });
+        const res = await fetch("/api/tablatures", { method: "POST" });
 
         if (res.status == 201) {
             router.push(`/tablatures/${(await res.json()).tablature.id}`);

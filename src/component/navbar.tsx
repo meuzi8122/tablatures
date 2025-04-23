@@ -1,5 +1,3 @@
-"use client";
-
 import MenuIcon from "@/component/icon/menu-icon";
 import { SITE_TITLE } from "@/constant/site";
 import Link from "next/link";
