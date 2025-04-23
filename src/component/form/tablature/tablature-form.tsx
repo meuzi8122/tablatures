@@ -1,6 +1,6 @@
 "use client";
 
-import { tablatureEditAction } from "@/action/tablature";
+import { updateTablatureAction } from "@/action/tablature";
 import Select, { Option } from "@/component/form/select";
 import TextInput from "@/component/form/text-input";
 import TrashIcon from "@/component/icon/trash-icon";
@@ -21,14 +21,22 @@ const INSTRUMENTS: Option[] = [
 export default function TablatureForm({ tablature }: Props) {
     const router = useRouter();
 
-    const [result, action, isPending] = useActionState(tablatureEditAction, null);
+    const [result, action, isPending] = useActionState(updateTablatureAction, { status: null, message: "" });
 
     useEffect(() => {
-        if (result?.isSuccess != undefined) {
+        if (result.status) {
             alert(result.message);
-            router.back();
         }
-    }, [result?.isSuccess]);
+    }, [result.status]);
+
+    const handleDeleteButtonClick = async () => {
+        const res = await fetch(`/api/tablatures/${tablature.id}`, { method: "DELETE" });
+        if (res.status == 200) {
+            router.back();
+        } else {
+            alert("TAB譜の削除に失敗しました。しばらくしてからもう一度お試しください。");
+        }
+    };
 
     return (
         <div className="flex flex-col">
@@ -40,11 +48,11 @@ export default function TablatureForm({ tablature }: Props) {
                 <input name="id" type="hidden" value={tablature.id}></input>
                 <input name="createdAt" type="hidden" value={tablature.createdAt.toString()}></input>
                 <div className="flex justify-between">
-                    <button className="btn btn-primary" name="action" type="submit" value="update">
+                    <button className="btn btn-primary" type="submit">
                         <UpdateIcon />
                         更新
                     </button>
-                    <button className="btn btn-error" name="action" type="submit" value="delete">
+                    <button className="btn btn-error" onClick={handleDeleteButtonClick}>
                         <TrashIcon />
                         削除
                     </button>

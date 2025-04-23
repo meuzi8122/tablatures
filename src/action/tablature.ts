@@ -3,74 +3,53 @@
 import { auth } from "@/auth";
 import { NeonTablatureRepository } from "@/repository/tablature";
 import { TablatureService } from "@/service/tablature";
-import { redirect, unauthorized } from "next/navigation";
+import { z } from "zod";
 
-export type TablatureActionResult = {
-    isSuccess?: boolean;
-    message?: string;
+type State = {
+    status: "SUCCEED" | "FAILED" | null;
+    message: string;
 };
 
-const tablatureService = new TablatureService(new NeonTablatureRepository());
+const UpdateTablatureFormSchema = z.object({
+    id: z.string().transform((id) => Number(id)),
+    title: z.string(),
+    artist: z.string(),
+    instrument: z.string(),
+    link: z.union([z.literal(""), z.string().url()]), // 空白文字かURL形式の文字列
+    createdAt: z.string().transform((createdAt) => new Date(createdAt)),
+});
 
-export async function tablatureEditAction(_: any, formData: any): Promise<TablatureActionResult> {
-    if (formData.get("action") == "update") {
-        return updateTablatureAction(formData);
-    } else if (formData.get("action") == "delete") {
-        return deleteTablatureAction(formData);
-    } // TODO: 公開・下書きの切り替え
-
-    return {};
-}
-
-async function updateTablatureAction(formData: any): Promise<TablatureActionResult> {
+export async function updateTablatureAction(_: State, formData: FormData): Promise<State> {
     const session = await auth();
 
     if (!session) {
-        unauthorized();
+        return { status: "FAILED", message: "セッションの有効期限が切れています。再度ログインしてください。" };
     }
 
-    let result: TablatureActionResult = { isSuccess: true, message: "TAB譜の更新に成功しました。" };
+    const result = UpdateTablatureFormSchema.safeParse({
+        id: formData.get("id"),
+        title: formData.get("title"),
+        artist: formData.get("artist"),
+        instrument: formData.get("instrument"),
+        link: formData.get("link"),
+        createdAt: formData.get("createdAt"),
+    });
 
-    /* ストレージにファイルをアップロードした後、アップロード先のurlをtablature.linkに代入 */
-    //if (formData.get("tablatureFile")) {}
+    if (!result.success) {
+        console.log(result.error.errors);
+        return { status: "FAILED", message: "入力内容に誤りがあります。" };
+    }
+
+    const tablature = result.data;
 
     try {
-        await tablatureService.updateTablature({
-            id: formData.get("id"),
-            userId: session?.user.id,
-            title: formData.get("title"),
-            artist: formData.get("artist"),
-            instrument: formData.get("instrument"),
-            link: formData.get("link"),
-            createdAt: new Date(formData.get("createdAt")),
+        await new TablatureService(new NeonTablatureRepository()).updateTablature({
+            ...tablature,
+            userId: session.user.id,
             updatedAt: new Date(),
         });
+        return { status: "SUCCEED", message: "TAB譜を更新しました。" };
     } catch (error) {
-        console.log(error);
-        result = { isSuccess: false, message: "TAB譜の更新に失敗しました。" };
-    }
-
-    return result;
-}
-
-async function deleteTablatureAction(formData: any): Promise<TablatureActionResult> {
-    let result: TablatureActionResult = { isSuccess: true, message: "TAB譜の削除に成功しました。" };
-
-    try {
-        await tablatureService.deleteTanblature(formData.get("id"));
-    } catch (error) {
-        console.log(error);
-        result = { isSuccess: false, message: "TAB譜の削除に失敗しました。" };
-    }
-
-    return result;
-}
-
-export async function createTablatureAction() {
-    const session = await auth();
-
-    if (session?.user.id) {
-        const tablature = await tablatureService.createTablature(session.user.id);
-        redirect(`/tablatures/${tablature.id}`);
+        return { status: "FAILED", message: "TAB譜の更新に失敗しました。しばらくしてからもう一度お試しください。" };
     }
 }
