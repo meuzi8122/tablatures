@@ -10,7 +10,7 @@ type State = {
     message: string;
 };
 
-const UpdateTablatureFormSchema = z.object({
+const UpdateTablatureSchema = z.object({
     id: z.string().transform((id) => Number(id)),
     title: z.string(),
     artist: z.string(),
@@ -26,7 +26,7 @@ export async function updateTablatureAction(_: State, formData: FormData): Promi
         return { status: "FAILED", message: "セッションの有効期限が切れています。再度ログインしてください。" };
     }
 
-    const result = UpdateTablatureFormSchema.safeParse({
+    const result = UpdateTablatureSchema.safeParse({
         id: formData.get("id"),
         title: formData.get("title"),
         artist: formData.get("artist"),

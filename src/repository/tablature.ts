@@ -48,6 +48,7 @@ export class NeonTablatureRepository implements TablatureRepositiry {
             },
             skip: (currentPage - 1) * PAGE_SIZE,
             take: PAGE_SIZE, //10件取得
+            orderBy: query.artist ? { artist: "desc" } : { id: "desc" },
         });
 
         const start = skip + 1;
@@ -57,9 +58,9 @@ export class NeonTablatureRepository implements TablatureRepositiry {
     }
 
     async getTablature(id: number): Promise<Tablature> {
-        const tablature = db.tablature.findUnique({ where: { id } });
+        const tablature = await db.tablature.findUnique({ where: { id } });
 
-        if (!tablature) {
+        if (tablature) {
             return tablature;
         } else {
             throw Error("Not Found");
