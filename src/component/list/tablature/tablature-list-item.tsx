@@ -1,8 +1,13 @@
+import { updateBookmarkAction } from "@/action/bookmark";
 import { auth } from "@/auth";
 import BookmarkIcon from "@/component/icon/bookmark-icon";
+import BookmarkStashIcon from "@/component/icon/bookmark-stash-icon";
 import EditIcon from "@/component/icon/edit-icon";
 import type { Tablature } from "@/generated/prisma";
+import { NeonBookmarkRepository } from "@/repository/bookmark";
+import { BookmarkService } from "@/service/bookamrk";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
     tablature: Tablature;
@@ -10,6 +15,11 @@ type Props = {
 
 export async function TablatureListItem({ tablature }: Props) {
     const session = await auth();
+
+    /* TODO: ListItemコンポーネントの数だけリクエストが発生 → N+1問題(+1はListでのリクエスト) */
+    const bookmark = session
+        ? await new BookmarkService(new NeonBookmarkRepository()).getBookmark(session.user.id, tablature.id)
+        : null;
 
     return (
         <li className="list-row">
@@ -24,14 +34,15 @@ export async function TablatureListItem({ tablature }: Props) {
                     {tablature.artist}
                 </a>
             </div>
-            {session?.user.id == tablature.userId ? (
-                <a href={`/tablatures/${tablature.id}`} className="btn btn-square btn-ghost">
+            {session && session.user.id == tablature.userId ? (
+                <Link href={`/tablatures/${tablature.id}`} className="btn btn-square btn-ghost">
                     <EditIcon />
-                </a>
+                </Link>
             ) : (
-                <form>
-                    <button className="btn btn-square btn-ghost">
-                        <BookmarkIcon />
+                <form action={updateBookmarkAction}>
+                    <input type="hidden" name="id" value={tablature.id} />
+                    <button type="submit" className="btn btn-square btn-ghost">
+                        {bookmark ? <BookmarkStashIcon /> : <BookmarkIcon />}
                     </button>
                 </form>
             )}

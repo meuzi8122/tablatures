@@ -4,8 +4,8 @@ import { BookmarkRepository } from "@/repository/bookmark";
 export class BookmarkService {
     constructor(private repository: BookmarkRepository) {}
 
-    async findTablatures(userId: number, tablatureIds: number[]): Promise<Bookmark[]> {
-        return this.repository.findBookmarks(userId, tablatureIds);
+    async getBookmark(userId: number, tablatureId: number): Promise<Bookmark | null> {
+        return this.repository.getBookmark(userId, tablatureId);
     }
 
     async createBookmark(userId: number, tablatureId: number): Promise<Bookmark> {
